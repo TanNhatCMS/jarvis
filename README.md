@@ -1,1 +1,166 @@
-IyBKQVJWSVMKCj4gxJDhu5lpIGFnZW50IGRldiB0w6FpIGTDuW5nIMSRxrDhu6NjIOKAlCBn4buNaSBi4bqxbmcgbeG7mXQgY8OidSBs4buHbmgsIGtow7RuZyBj4bqnbiBk4buxbmcgdGVhbSBt4bubaSBt4buXaSBs4bqnbi4KCkpBUlZJUyBsw6AgYuG7mSB3b3JrZmxvdyDEkWnhu4F1IHBo4buRaSBhZ2VudCBBSSBsw6BtIHBo4bqnbiBt4buBbSB0aGVvIHBpcGVsaW5lIGPhu5EgxJHhu4tuaDoKbOG6rXAga+G6vyBob+G6oWNoIOKGkiB2aeG6v3QgY29kZSDihpIgcmV2aWV3IOKGkiBraeG7g20gdGjhu60g4oaSIHNoaXAuIFZp4bq/dCBt4buZdCBs4bqnbiwgbeG7l2kgbOG6p24gZ2lhbwp2aeG7h2MgY2jhu4kgY+G6p24gZ+G7jWkgdMOqbiB3b3JrZmxvdywga2jDtG5nIGPhuqduIGThu7FuZyB0ZWFtIG3hu5tpLgoKIyMgVGjDoG5oIHBo4bqnbgoKfCBXb3JrZmxvdyB8IE3DtCB04bqjIHwgUGlwZWxpbmUgfAp8LS0tfC0tLXwtLS18CnwgYHdvcmtmbG93cy9qYXJ2aXMuanNgIHwgKipGdWxsLWF1dG8qKjogZ+G7mXAgc3BlYy10ZWFtICsgZGV2LXRlYW0sIGNo4bqheSB4dXnDqm4gc3Xhu5F0IGtow7RuZyBk4burbmcgfCBkaXNjb3ZlciDihpIgY29uc3RpdHV0aW9uIOKGkiBzcGVjaWZ5IOKGkiBjbGFyaWZ5LWF1dG8g4oaSIHBsYW4g4oaSIHRhc2tzIOKGkiBhdWRpdCDihpIgaW1wbGVtZW50IOKGkiBzaGlwIHwKfCBgd29ya2Zsb3dzL2Rldi10ZWFtLmpzYCB8IMSQ4buZaSBkZXYgdGjhu7FjIHRoaSB0YXNrIHwgYW5hbHl6ZSDihpIgaW1wbGVtZW50IOKGkiByZXZpZXcg4oaSIHZlcmlmeSDihpIgc2hpcCAodMO5eSBjaOG7jW4pIHwKfCBgd29ya2Zsb3dzL3NwZWMtdGVhbS5qc2AgfCBM4bqtcCBr4bq/IGhv4bqhY2ggc3BlYy1kcml2ZW4gKGPDsyBj4buVbmcgbmfGsOG7nWkgZHV54buHdCkgfCBkaXNjb3ZlciDihpIgY29uc3RpdHV0aW9uIOKGkiBzcGVjaWZ5IOKGkiBjbGFyaWZ5IOKGkiBwbGFuIOKGkiB0YXNrcyDihpIgYW5hbHl6ZSB8CgojIyMgamFydmlzIChmdWxsLWF1dG8pCgpH4buZcCBoYWkgd29ya2Zsb3cgdHLDqm4gdGjDoG5oIG3hu5l0IHBpcGVsaW5lIGR1eSBuaOG6pXQsIHRoZW8gbOG7sWEgY2jhu41uICJjaOG6oXkgeHV5w6puCnN14buRdCBraMO0bmcgZOG7q25nIjoKCi0gKipjbGFyaWZ5LWF1dG8qKjogdGhheSB2w6wgaOG7j2kgbmfGsOG7nWksIGFnZW50IHThu7EgcXV54bq/dCBt4buNaSDEkWnhu4NtIG3GoSBo4buTIGLhurFuZyBwaMOhbgogIMSRb8OhbiB04buRdCBuaOG6pXQsIGdoaSB2w6BvIHNwZWMubWQgZMaw4bubaSBt4bulYyBgIyMgR2nhuqMgxJHhu4tuaCDEkcOjIGNo4buRdCAoYXV0bylgLgotICoqZGlzY292ZXIqKjogdOG7sSBjaOG7jW4g4bupbmcgdmnDqm4gIzEgKHjhur9wIGjhuqFuZyB0aGVvIGdpw6EgdHLhu4svZWZmb3J0KSBy4buTaSDEkWkgdGnhur9wLgotICoqYXVkaXQqKjoga2nhu4NtIHRvw6FuIHNwZWPihpRwbGFu4oa6dGFza3MsIHThu7Egc+G7rWEgxJHhur9uIGtoaSDEkeG6oXQgKGdp4bubaSBo4bqhbiB2w7JuZykuCi0gTeG7l2kgdGFzayB04burIHNwZWMgxJHGsOG7o2MgY29kZXIgxJHhu41jIHNwZWMgKyBwbGFuIHRyxrDhu5tjIGtoaSBjb2RlLgotIE7hur91IGNo4buJIHRydXnhu4FuIGB0YXNrYC9gdGFza3NgIChraMO0bmcgY8OzIGBmZWF0dXJlYC9gc3BlY19kaXJgL2BkaXNjb3ZlcmApLAogIHdvcmtmbG93IHThu7EgY2h1eeG7g24gc2FuZyBjaOG6vyDEkeG7mSAqKmRldi1vbmx5Kio6IGLhu48gcXVhIHNwZWMsIGNo4bqheSB0aOG6s25nIGRldi10ZWFtLgoKIyMjIGRldi10ZWFtCgpOaOG6rW4gMSBob+G6t2Mgbmhp4buBdSB0YXNrIChgdGFza2AgaG/hurdjIGB0YXNrc2ApLCB44butIGzDvSBu4buRaSB0aeG6v3AgdOG7q25nIHRhc2s6CgoxLiAqKmFuYWx5emUqKiDigJQgcGxhbm5lciDEkeG7jWMgY29kZWJhc2UsIGzhuq1wIGvhur8gaG/huqFjaCBjaGlhIHN0ZXBzCjIuICoqaW1wbGVtZW50Kiog4oCUIGNvZGVyIGzDoG0gdOG7q25nIHN0ZXAsIGJ1aWxkLWNoZWNrIG5oYW5oIHNhdSBt4buXaSBzdGVwCjMuICoqcmV2aWV3Kiog4oCUIHJldmlld2VyIGtow7MgdMOtbmgsIHbDsm5nIHPhu61hIGzhu5dpIGdp4bubaSBo4bqhbiAoYG1heF9yZXBhaXJfYXR0ZW1wdHNgLCBt4bq3YyDEkeG7i25oIDIpCjQuICoqdmVyaWZ5Kiog4oCUIFFBIGNo4bqheSBidWlsZC90ZXN0IHThu5VuZyB0aOG7gwo1LiAqKnNoaXAqKiAodMO5eSBjaOG7jW4pIOKAlCByZWxlYXNlIGVuZ2luZWVyIHThuqFvIG5ow6FuaCBgZGV2LXRlYW0vdE4tPHNsdWc+YCwgY29tbWl0LCBwdXNoLCBt4bufIFBSIChrw6htIGBDbG9zZXMgI2ApCgpUYXNrIGzhu5dpIMSRxrDhu6NjIGdoaSBuaOG6rW4gdsOgIHRp4bq/cCB04bulYyB0YXNrIHNhdSwga2jDtG5nIGThu6tuZyBj4bqjIGJhdGNoLgoKVGhhbSBz4buRIGNow61uaDogYHRhc2tgIC8gYHRhc2tzYCwgYHJlcG9gLCBgYnJhbmNoYCwgYG1heF9yZXBhaXJfYXR0ZW1wdHNgLApgZ2l0aHViX3JlcG9gIChgIm93bmVyL3JlcG8iYCDEkeG7gyBi4bqtdCBwaGFzZSBzaGlwKSwgYGNyZWF0ZV9pc3N1ZWAsIGBjcmVhdGVfcHJgLApgaXNzdWVfbnVtYmVyYCwgYGJhc2VfYnJhbmNoYC4KCiMjIyBzcGVjLXRlYW0KClBsYW5uaW5nIHRoZW8gcGhvbmcgY8OhY2ggc3BlYy1kcml2ZW4gKGzhuqV5IGPhuqNtIGjhu6luZyB04burCltHaXRIdWIgU3BlYyBLaXRdKGh0dHBzOi8vZ2l0aHViLmNvbS9naXRodWIvc3BlYy1raXQpKToKCjEuICoqZGlzY292ZXIqKiAodMO5eSBjaOG7jW4pIOKAlCDEkeG7jWMgUkVBRE1FL3JvYWRtYXAvaXNzdWVzLCDEkeG7gSB4deG6pXQgdMOtbmggbsSDbmcga8OobSBwcmlvcml0eSBQMOKAk1AyIC8gZWZmb3J0IFPigJNMLCBk4burbmcgxJHhu4MgY29uIG5nxrDhu51pIGNo4buNbgoyLiAqKmNvbnN0aXR1dGlvbioqIOKAlCBkw7luZyBs4bqhaSBuZ3V5w6puIHThuq9jIGThu7Egw6FuIG7hur91IMSRw6MgY8OzLCBraMO0bmcgdmnhur90IGzhuqFpCjMuICoqc3BlY2lmeSoqIOKAlCB04bqhbyBgc3BlY3MvPE5OTj4tPHNsdWc+L3NwZWMubWRgIChjaOG7iSB3aGF0L3doeSwgY+G6pW0gdGVjaCBzdGFjaykKNC4gKipjbGFyaWZ5Kiog4oCUIHThu5FpIMSRYSA1IGPDonUgaOG7j2kgY2hvIGNvbiBuZ8aw4budaSwgxJHDoW5oIGThuqV1IGBbTkVFRFMgQ0xBUklGSUNBVElPTl1gCjUuICoqcGxhbioqIOKAlCBgcGxhbi5tZGAgKyBgcmVzZWFyY2gubWRgIC8gYGRhdGEtbW9kZWwubWRgIC8gYGNvbnRyYWN0cy9gIGtoaSBj4bqnbgo2LiAqKnRhc2tzKiog4oCUIGB0YXNrcy5tZGAgZOG6oW5nIGBUMDAxLi4uYCBrw6htIMSRw6FuaCBk4bqldSBgW1BdYCBjaG8gdGFzayBzb25nIHNvbmcKNy4gKiphbmFseXplKiog4oCUIGtp4buDbSB0b8OhbiBjaMOpbyBzcGVjIOKGlCBwbGFuIOKGlCB0YXNrcywgdsOybmcgc+G7rWEgZ2nhu5tpIGjhuqFuCgpPdXRwdXQgdHLhuqMgduG7gSBgZGV2X3RlYW1fdGFza3NgIOKAlCBt4bqjbmcgdGFzayBuw6ltIHRo4bqzbmcgdsOgbyBgZGV2LXRlYW1gIMSR4buDIHRo4buxYyB0aGkuCgojIyBTa2lsbHMKClBsYXlib29rIGNobyBhZ2VudCwgxJHhurd0IHRyb25nIGBza2lsbHMvPHTDqm4+L1NLSUxMLm1kYDoKCnwgU2tpbGwgfCBNw7QgdOG6oyB8CnwtLS18LS0tfAp8IGBhZ2VudC1icm93c2VyYCB8IFThu7EgxJHhu5luZyBow7NhIHRyw6xuaCBkdXnhu4d0IChDaHJvbWUvQ2hyb21pdW0gcXVhIENEUCk6IMSRaeG7gXUgaMaw4bubbmcsIHNuYXBzaG90LCB0xrDGoW5nIHTDoWMgfAp8IGBhaS1lbGVtZW50c2AgfCBDb21wb25lbnQgVUkgY2hvIGdpYW8gZGnhu4duIEFJIChjaGF0LCBwcm9tcHQgaW5wdXQuLi4pIHwKfCBgZG9nZm9vZGAgfCBSw6Agc2/DoXQgd2ViIGFwcCBjw7MgaOG7hyB0aOG7kW5nLCB0w6xtIGJ1ZyB2w6AgbOG6rXAgYsOhbyBjw6FvIGvDqG0gYuG6sW5nIGNo4bupbmcgdMOhaSBoaeG7h24gfAp8IGBmZWF0dXJlLWJvdW5kYXJ5LXBsYW5uZXJgIHwgTOG6rXAga+G6vyBob+G6oWNoIHJhbmggZ2nhu5tpIHTDrW5oIG7Eg25nIHRyxrDhu5tjIGtoaSBjb2RlIHwKfCBgcmVhY3QtYmVzdC1wcmFjdGljZXNgIHwgUXV5IMaw4bubYyBSZWFjdCB04buRdCBuaOG6pXQgKHRoZW8gVmVyY2VsKSB8CgpOZ3Xhu5NuOiB0csOtY2ggdOG7qyBbemFpLW9yZy9aQ29kZV0oaHR0cHM6Ly9naXRodWIuY29tL3phaS1vcmcvWkNvZGUpIChBcGFjaGUtMi4wKTsKxJHDoyBsxrDhu6NjIGLhu48gY8OhYyBza2lsbCBn4bqvbiBj4bupbmcgbuG7mWkgYuG7mSBaQ29kZSAoYXJjaGl0ZWN0dXJlLWdvdmVybmFuY2UsIGRlcC1yZWZzLCBlbGVjdHJvbikuCgojIyBDw6FjaCBkw7luZwoKQ8OhYyBzY3JpcHQgY2jhuqF5IHRyw6puIHdvcmtmbG93IHJ1bnRpbWUgKMSRxINuZyBrw70gYuG6sW5nIGB3b3JrZmxvdy5jcmVhdGVgLCBn4buNaSBi4bqxbmcKYHdvcmtmbG93LmxhdW5jaGApLiBWw60gZOG7pToKCmBgYGpzCi8vIEZ1bGwtYXV0bzogdOG7qyDDvSB0xrDhu59uZyB04bubaSBjb2RlIHThu5tpIHNoaXAsIGtow7RuZyBk4burbmcgaOG7j2kKd29ya2Zsb3cubGF1bmNoKCJqYXJ2aXMiLCB7CiAgZmVhdHVyZTogIkNobyBwaMOpcCB1c2VyIHVwbG9hZCDhuqNuaCDEkeG6oWkgZGnhu4duIiwKICByZXBvOiAid29ya3NwYWNlL3Byb2plY3RzL215LWFwcCIsCiAgZ2l0aHViX3JlcG86ICJteS1vcmcvbXktYXBwIiwKICBjcmVhdGVfcHI6IHRydWUKfSkKCi8vIENo4bq/IMSR4buZIGRldi1vbmx5OiBjw7MgdGFzayBz4bq1biwgYuG7jyBxdWEgc3BlYwp3b3JrZmxvdy5sYXVuY2goImphcnZpcyIsIHsKICB0YXNrczogWyJT4butYSBs4buXaSDEkcSDbmcgbmjhuq1wIiwgIlRow6ptIHRyYW5nIGPDoGkgxJHhurd0Il0sCiAgcmVwbzogIndvcmtzcGFjZS9wcm9qZWN0cy9teS1hcHAiCn0pCgovLyBDaOG6oXkgMSB0YXNrIChkZXYtdGVhbSB0aHXhuqduKQp3b3JrZmxvdy5sYXVuY2goImRldi10ZWFtIiwgewogIHRhc2s6ICJUaMOqbSB0cmFuZyDEkcSDbmcgbmjhuq1wIHbhu5tpIGVtYWlsICsgcGFzc3dvcmQiLAogIHJlcG86ICJ3b3Jrc3BhY2UvcHJvamVjdHMvbXktYXBwIiwKICBnaXRodWJfcmVwbzogIm15LW9yZy9teS1hcHAiLAogIGNyZWF0ZV9wcjogdHJ1ZQp9KQoKLy8gQ2jhuqF5IGJhdGNoIG5oaeG7gXUgdGFzawp3b3JrZmxvdy5sYXVuY2goImRldi10ZWFtIiwgewogIHRhc2tzOiBbIlRhc2sgQSIsIHsgdGFzazogIlRhc2sgQiIsIGJhc2VfYnJhbmNoOiAiZGV2ZWxvcCIgfV0sCiAgcmVwbzogIndvcmtzcGFjZS9wcm9qZWN0cy9teS1hcHAiCn0pCgovLyBM4bqtcCBzcGVjIGNobyB0w61uaCBuxINuZyBt4bubaQp3b3JrZmxvdy5sYXVuY2goInNwZWMtdGVhbSIsIHsKICBmZWF0dXJlOiAiQ2hvIHBow6lwIHVzZXIgdXBsb2FkIOG6o25oIMSR4bqhaSBkaeG7h24iLAogIHJlcG86ICJ3b3Jrc3BhY2UvcHJvamVjdHMvbXktYXBwIgp9KQpgYGAKCiMjIEzGsHUgw70ga+G7uSB0aHXhuq10CgotIFNjcmlwdCBkw7luZyBgZXhwb3J0IGNvbnN0IG1ldGFgIChFUyBtb2R1bGUpLiBgbm9kZSAtLWNoZWNrYCBraMO0bmcga2nhu4NtIHRyYSDEkcaw4bujYwogIGPDuiBwaMOhcCBFUyBtb2R1bGUgdHLDqm4gTm9kZSAyNCAobHXDtG4gZXhpdCAwKSDigJQgY+G6p24gc3RyaXAgYGV4cG9ydGAgaG/hurdjIGTDuW5nCiAgZHluYW1pYyBgaW1wb3J0KClgIMSR4buDIGNoZWNrIHRo4bqtdC4KLSBUcsOhbmggYHBpcGVsaW5lKClgIMSRYSBzdGFnZSBj4bunYSBkYWVtb24gKHThu6tuZyBnw6J5IGzhu5dpIGBub3QgYSBjYWxsYWJsZSBmdW5jdGlvbmApOwogIGTDuW5nIHbDsm5nIGzhurdwIGBmb3JgIHRoxrDhu51uZyBjaOG6oXkgbuG7kWkgdGnhur9wIGPDoWMgc3RhZ2UgdGhheSB0aOG6vy4KCiMjIExpY2Vuc2UKCk1JVCDigJQgeGVtIFtMSUNFTlNFXShMSUNFTlNFKS4K
+# JARVIS
+
+> Đội agent dev tái dùng được — gọi bằng một câu lệnh, không cần dựng team mới mỗi lần.
+
+JARVIS là bộ workflow điều phối agent AI làm phần mềm theo pipeline cố định:
+lập kế hoạch → viết code → review → kiểm thử → ship. Viết một lần, mỗi lần giao
+việc chỉ cần gọi tên workflow, không cần dựng team mới.
+
+## Thành phần
+
+| Workflow | Mô tả | Pipeline |
+|---|---|---|
+| `workflows/jarvis.js` | **Full-auto**: gộp spec-team + dev-team, chạy xuyên suốt không dừng | discover → constitution → specify → clarify-auto → plan → tasks → audit → implement → ship |
+| `workflows/dev-team.js` | Đội dev thực thi task | analyze → implement → review → verify → ship (tùy chọn) |
+| `workflows/spec-team.js` | Lập kế hoạch spec-driven (có cổng người duyệt) | discover → constitution → specify → clarify → plan → tasks → analyze |
+
+### jarvis (full-auto)
+
+Gộp hai workflow trên thành một pipeline duy nhất, theo lựa chọn "chạy xuyên
+suốt không dừng":
+
+- **clarify-auto**: thay vì hỏi người, agent tự quyết mọi điểm mơ hồ bằng phán
+  đoán tốt nhất, ghi vào spec.md dưới mục `## Giả định đã chốt (auto)`.
+- **discover**: tự chọn ứng viên #1 (xếp hạng theo giá trị/effort) rồi đi tiếp.
+- **audit**: kiểm toán spec↔plan↺tasks, tự sửa đến khi đạt (giới hạn vòng).
+- Mỗi task từ spec được coder đọc spec + plan trước khi code.
+- Nếu chỉ truyền `task`/`tasks` (không có `feature`/`spec_dir`/`discover`),
+  workflow tự chuyển sang chế độ **dev-only**: bỏ qua spec, chạy thẳng dev-team.
+
+### dev-team
+
+Nhận 1 hoặc nhiều task (`task` hoặc `tasks`), xử lý nối tiếp từng task:
+
+1. **analyze** — planner đọc codebase, lập kế hoạch chia steps
+2. **implement** — coder làm từng step, build-check nhanh sau mỗi step
+3. **review** — reviewer khó tính, vòng sửa lỗi giới hạn (`max_repair_attempts`, mặc định 2)
+4. **verify** — QA chạy build/test tổng thể
+5. **ship** (tùy chọn) — release engineer tạo nhánh `dev-team/tN-<slug>`, commit, push, mở PR (kèm `Closes #`)
+
+Task lỗi được ghi nhận và tiếp tục task sau, không dừng cả batch.
+
+Tham số chính: `task` / `tasks`, `repo`, `branch`, `max_repair_attempts`,
+`github_repo` (`"owner/repo"` để bật phase ship), `create_issue`, `create_pr`,
+`issue_number`, `base_branch`.
+
+### spec-team
+
+Planning theo phong cách spec-driven (lấy cảm hứng từ
+[GitHub Spec Kit](https://github.com/github/spec-kit)):
+
+1. **discover** (tùy chọn) — đọc README/roadmap/issues, đề xuất tính năng kèm priority P0–P2 / effort S–L, dừng để con người chọn
+2. **constitution** — dùng lại nguyên tắc dự án nếu đã có, không viết lại
+3. **specify** — tạo `specs/<NNN>-<slug>/spec.md` (chỉ what/why, cấm tech stack)
+4. **clarify** — tối đa 5 câu hỏi cho con người, đánh dấu `[NEEDS CLARIFICATION]`
+5. **plan** — `plan.md` + `research.md` / `data-model.md` / `contracts/` khi cần
+6. **tasks** — `tasks.md` dạng `T001...` kèm đánh dấu `[P]` cho task song song
+7. **analyze** — kiểm toán chéo spec ↔ plan ↔ tasks, vòng sửa giới hạn
+
+Output trả về `dev_team_tasks` — mảng task ném thẳng vào `dev-team` để thực thi.
+
+## Skills
+
+Playbook cho agent, đặt trong `skills/<tên>/SKILL.md`:
+
+### Core (JARVIS)
+
+| Skill | Mô tả |
+|---|---|
+| `agent-browser` | Tự động hóa trình duyệt (Chrome/Chromium qua CDP): điều hướng, snapshot, tương tác |
+| `ai-elements` | Component UI cho giao diện AI (chat, prompt input...) |
+| `dogfood` | Rà soát web app có hệ thống, tìm bug và lập báo cáo kèm bằng chứng tái hiện |
+| `feature-boundary-planner` | Lập kế hoạch ranh giới tính năng trước khi code |
+| `react-best-practices` | Quy ước React tốt nhất (theo Vercel) |
+
+Nguồn: trích từ [zai-org/ZCode](https://github.com/zai-org/ZCode) (Apache-2.0);
+đã lược bỏ các skill gắn cứng nội bộ ZCode (architecture-governance, dep-refs, electron).
+
+### ECC (bóc tách từ affaan-m/ECC, MIT)
+
+55 skills trong `skills/ecc-<tên>/` + 71 agents trong `agents/ecc/` — bao gồm
+tdd-workflow, security-review, git-workflow, context-budget, council,
+verification-loop, dev-team, unified-memory... Nguồn: [affaan-m/ECC](https://github.com/affaan-m/ECC).
+
+### 40 Things to Install in Claude (chọn lọc, MIT/Apache-2.0)
+
+| Skill | Nguồn | Mô tả |
+|---|---|---|
+| `karpathy` | [jidechao/karpathy-skills](https://github.com/jidechao/karpathy-skills) | 10 behavioral rules giảm lỗi coding LLM |
+| `superpowers-brainstorming` | [obra/superpowers](https://github.com/obra/superpowers) | Brainstorming ý tưởng → spec |
+| `superpowers-tdd` | [obra/superpowers](https://github.com/obra/superpowers) | Test-driven development |
+| `superpowers-debugging` | [obra/superpowers](https://github.com/obra/superpowers) | Systematic debugging |
+| `superpowers-code-review` | [obra/superpowers](https://github.com/obra/superpowers) | Requesting code review |
+| `ponytail` | [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) | YAGNI "lazy senior dev", chống over-engineering |
+| `taste-design` | [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill) | Anti-slop frontend design |
+| `anthropics-mcp-builder` | [anthropics/skills](https://github.com/anthropics/skills) | Xây MCP server (Apache-2.0) |
+| `anthropics-skill-creator` | [anthropics/skills](https://github.com/anthropics/skills) | Tạo skill mới (Apache-2.0) |
+| `addyosmani-api-design` | [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills) | Thiết kế API/interface |
+| `addyosmani-security` | [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills) | Security hardening |
+| `addyosmani-observability` | [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills) | Observability & instrumentation |
+| `addyosmani-constraints` | [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills) | Constraint-driven development |
+| `addyosmani-performance` | [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills) | Performance optimization |
+| `mattpocock-grill-docs` | [mattpocock/skills](https://github.com/mattpocock/skills) | Đối chiếu docs khi code |
+| `mattpocock-domain-model` | [mattpocock/skills](https://github.com/mattpocock/skills) | Domain modeling |
+| `mattpocock-wayfinder` | [mattpocock/skills](https://github.com/mattpocock/skills) | Định hướng codebase |
+| `mattpocock-triage` | [mattpocock/skills](https://github.com/mattpocock/skills) | Triage vấn đề |
+| `caveman` | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman) | Trả lời cực ngắn, tiết kiệm token |
+| `headroom` | [roman-ryzenadvanced/headroom-skill](https://github.com/roman-ryzenadvanced/headroom-skill) | Nén context cho agent |
+| `rtk` | [rtk-ai/rtk](https://github.com/rtk-ai/rtk) | Lọc output lệnh dev trước khi vào context |
+| `dev-best-practices` | [MG-Cafe/claude-code-best-practices](https://github.com/MG-Cafe/claude-code-best-practices) | 9 rules thực hành cho agent dev |
+| `codex-review` | [openai/codex-plugin-cc](https://github.com/openai/codex-plugin-cc) | Review code bằng model thứ hai (codex CLI) |
+| `web-scrape` | [firecrawl/firecrawl](https://github.com/firecrawl/firecrawl) | Web → markdown qua Firecrawl API |
+
+Mỗi skill giữ nguyên LICENSE/attribution của upstream trong thư mục của nó.
+
+## Cách dùng
+
+Các script chạy trên workflow runtime (đăng ký bằng `workflow.create`, gọi bằng
+`workflow.launch`). Ví dụ:
+
+```js
+// Full-auto: từ ý tưởng tới code tới ship, không dừng hỏi
+workflow.launch("jarvis", {
+  feature: "Cho phép user upload ảnh đại diện",
+  repo: "workspace/projects/my-app",
+  github_repo: "my-org/my-app",
+  create_pr: true
+})
+
+// Chế độ dev-only: có task sẵn, bỏ qua spec
+workflow.launch("jarvis", {
+  tasks: ["Sửa lỗi đăng nhập", "Thêm trang cài đặt"],
+  repo: "workspace/projects/my-app"
+})
+
+// Chạy 1 task (dev-team thuần)
+workflow.launch("dev-team", {
+  task: "Thêm trang đăng nhập với email + password",
+  repo: "workspace/projects/my-app",
+  github_repo: "my-org/my-app",
+  create_pr: true
+})
+
+// Chạy batch nhiều task
+workflow.launch("dev-team", {
+  tasks: ["Task A", { task: "Task B", base_branch: "develop" }],
+  repo: "workspace/projects/my-app"
+})
+
+// Lập spec cho tính năng mới
+workflow.launch("spec-team", {
+  feature: "Cho phép user upload ảnh đại diện",
+  repo: "workspace/projects/my-app"
+})
+```
+
+## Lưu ý kỹ thuật
+
+- Script dùng `export const meta` (ES module). `node --check` không kiểm tra được
+  cú pháp ES module trên Node 24 (luôn exit 0) — cần strip `export` hoặc dùng
+  dynamic `import()` để check thật.
+- Tránh `pipeline()` đa stage của daemon (từng gây lỗi `not a callable function`);
+  dùng vòng lặp `for` thường chạy nối tiếp các stage thay thế.
+
+## License
+
+MIT — xem [LICENSE](LICENSE).
