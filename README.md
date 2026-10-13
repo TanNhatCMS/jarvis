@@ -10,8 +10,22 @@ việc chỉ cần gọi tên workflow, không cần dựng team mới.
 
 | Workflow | Mô tả | Pipeline |
 |---|---|---|
+| `workflows/jarvis.js` | **Full-auto**: gộp spec-team + dev-team, chạy xuyên suốt không dừng | discover → constitution → specify → clarify-auto → plan → tasks → audit → implement → ship |
 | `workflows/dev-team.js` | Đội dev thực thi task | analyze → implement → review → verify → ship (tùy chọn) |
-| `workflows/spec-team.js` | Lập kế hoạch spec-driven | discover → constitution → specify → clarify → plan → tasks → analyze |
+| `workflows/spec-team.js` | Lập kế hoạch spec-driven (có cổng người duyệt) | discover → constitution → specify → clarify → plan → tasks → analyze |
+
+### jarvis (full-auto)
+
+Gộp hai workflow trên thành một pipeline duy nhất, theo lựa chọn "chạy xuyên
+suốt không dừng":
+
+- **clarify-auto**: thay vì hỏi người, agent tự quyết mọi điểm mơ hồ bằng phán
+  đoán tốt nhất, ghi vào spec.md dưới mục `## Giả định đã chốt (auto)`.
+- **discover**: tự chọn ứng viên #1 (xếp hạng theo giá trị/effort) rồi đi tiếp.
+- **audit**: kiểm toán spec↔plan↺tasks, tự sửa đến khi đạt (giới hạn vòng).
+- Mỗi task từ spec được coder đọc spec + plan trước khi code.
+- Nếu chỉ truyền `task`/`tasks` (không có `feature`/`spec_dir`/`discover`),
+  workflow tự chuyển sang chế độ **dev-only**: bỏ qua spec, chạy thẳng dev-team.
 
 ### dev-team
 
@@ -50,7 +64,21 @@ Các script chạy trên workflow runtime (đăng ký bằng `workflow.create`, 
 `workflow.launch`). Ví dụ:
 
 ```js
-// Chạy 1 task
+// Full-auto: từ ý tưởng tới code tới ship, không dừng hỏi
+workflow.launch("jarvis", {
+  feature: "Cho phép user upload ảnh đại diện",
+  repo: "workspace/projects/my-app",
+  github_repo: "my-org/my-app",
+  create_pr: true
+})
+
+// Chế độ dev-only: có task sẵn, bỏ qua spec
+workflow.launch("jarvis", {
+  tasks: ["Sửa lỗi đăng nhập", "Thêm trang cài đặt"],
+  repo: "workspace/projects/my-app"
+})
+
+// Chạy 1 task (dev-team thuần)
 workflow.launch("dev-team", {
   task: "Thêm trang đăng nhập với email + password",
   repo: "workspace/projects/my-app",
