@@ -33,6 +33,7 @@ install_dir "skills" "$PREFIX/skills"
 install_dir "agents" "$PREFIX/agents"
 install_dir "workflows" "$PREFIX/workflows"
 install_dir "docs" "$PREFIX/docs"
+install_dir "prompts" "$PREFIX/prompts"
 
 for f in README.md ATTRIBUTION.md SKILLS_INDEX.md AGENTS.md; do
   [[ -f "$REPO_DIR/$f" ]] || continue
