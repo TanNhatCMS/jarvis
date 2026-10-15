@@ -3,6 +3,13 @@
 Mọi thay đổi prompt/policy của workflow đều ghi ở đây (kèm version).
 Xem quy trình tại [../learning-loop.md](../learning-loop.md).
 
+## 2026-10-16 — prompts/bot-templates/ (mới, bóc tách)
+
+14 bot brief template từ Anil-matcha/awesome-muse-connectors (MIT, của Anil-matcha),
+copy nguyên văn từ `templates/` @ commit `0ffbcc0`. Mỗi template: Category,
+Integrations, Approval level, Prompt copy-paste, First supervised run.
+Tài liệu tham khảo, không phải policy chạy.
+
 ## 2026-10-15 — prompts/hugginggpt-4stage.md (mới, bóc tách)
 
 Prompt tham khảo 4-stage orchestration từ microsoft/JARVIS (MIT): trích nguyên văn
