@@ -1,6 +1,8 @@
 # SKILLS INDEX
 
-Danh mục 87 skills trong `skills/`. License từng nguồn: xem [ATTRIBUTION.md](ATTRIBUTION.md).
+Danh mục 1741 skills trong `skills/`. License từng nguồn: xem [ATTRIBUTION.md](ATTRIBUTION.md).
+
+> Ghi chú: main ghi 87 là thiếu (đã merge PR #5: +158 connectors, PR #6: +1 skill → thực tế 245 trước PR này).
 
 > Lưu ý: `skills/ecc-dev-team/` là skill của ECC (cho Claude Code), **khác** với
 > `workflows/dev-team.js` (workflow điều phối của JARVIS). Hai thứ trùng tên nhưng độc lập.
@@ -110,6 +112,19 @@ Danh mục 87 skills trong `skills/`. License từng nguồn: xem [ATTRIBUTION.m
 | Skill | Mô tả |
 |---|---|
 | `easytool-skill-author` | Rewrite verbose tool/API docs into concise, standardized tool-use instructions with examples. Use when onboarding a new MCP server/CLI/API as a skill or fixing wrong tool/parameter choices. |
+
+## Awesome Muse Skills (1496 skills — aicodedecode/awesome-muse-skills)
+
+> Danh sách đầy đủ 1496 skill: [skills/awesome-muse-skills/README.md](skills/awesome-muse-skills/README.md).
+
+| Nhóm | Số lượng | Nguồn | License |
+|---|---|---|---|
+| `ams-*` | 901 | skill gốc của repo nguồn | MIT |
+| `ams-kw-*` | 264 | port từ anthropics/knowledge-work-plugins | Apache-2.0 |
+| `ams-imp-*` | 331 | curated imports có license rõ | MIT / Apache-2.0 |
+
+Không lấy: 1065 imports không rõ license, 10 proprietary, 79 license mập mờ,
+30 file ảnh nhị phân, `scripts/`+`assets/` (tooling của repo nguồn).
 
 ## Community (1 skill — sonlovinbot/Muse-animated-short-film, MIT)
 
