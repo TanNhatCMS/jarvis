@@ -81,7 +81,7 @@ Nguồn: trích từ [zai-org/ZCode](https://github.com/zai-org/ZCode) (Apache-2
 tdd-workflow, security-review, git-workflow, context-budget, council,
 verification-loop, dev-team, unified-memory... Nguồn: [affaan-m/ECC](https://github.com/affaan-m/ECC).
 
-### 40 Things to Install in Claude (chọn lọc, MIT/Apache-2.0)
+### 40 Things to Install in Claude (chọn lọc — license từng nguồn xem ATTRIBUTION.md)
 
 | Skill | Nguồn | Mô tả |
 |---|---|---|
@@ -109,8 +109,12 @@ verification-loop, dev-team, unified-memory... Nguồn: [affaan-m/ECC](https://g
 | `dev-best-practices` | [MG-Cafe/claude-code-best-practices](https://github.com/MG-Cafe/claude-code-best-practices) | 9 rules thực hành cho agent dev |
 | `codex-review` | [openai/codex-plugin-cc](https://github.com/openai/codex-plugin-cc) | Review code bằng model thứ hai (codex CLI) |
 | `web-scrape` | [firecrawl/firecrawl](https://github.com/firecrawl/firecrawl) | Web → markdown qua Firecrawl API |
+| `serena` | [oraios/serena](https://github.com/oraios/serena) | Semantic code toolkit qua LSP (skill là tài liệu wrapper, tool GPL-3.0 chạy độc lập) |
 
-Mỗi skill giữ nguyên LICENSE/attribution của upstream trong thư mục của nó.
+Attribution và license của từng skill xem [ATTRIBUTION.md](ATTRIBUTION.md).
+Một số skill giữ file LICENSE riêng trong thư mục của nó
+(`anthropics-*`, `caveman`, `dev-best-practices`, `headroom`, `karpathy`,
+`taste-design`); các skill còn lại được kê tập trung trong ATTRIBUTION.md.
 
 ## Cách dùng
 
@@ -163,4 +167,9 @@ workflow.launch("spec-team", {
 
 ## License
 
-MIT — xem [LICENSE](LICENSE).
+Code gốc của repo: MIT — xem [LICENSE](LICENSE).
+
+Các skills/agents bóc tách từ dự án nguồn mở giữ nguyên license của nguồn:
+xem bảng attribution đầy đủ trong [ATTRIBUTION.md](ATTRIBUTION.md)
+(MIT / Apache-2.0; hai tool dùng ngoài `serena` là GPL-3.0-or-later,
+`web-scrape` gọi Firecrawl API — cả hai đều không copy code vào repo).
