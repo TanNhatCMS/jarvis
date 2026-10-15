@@ -3,6 +3,13 @@
 Mọi thay đổi prompt/policy của workflow đều ghi ở đây (kèm version).
 Xem quy trình tại [../learning-loop.md](../learning-loop.md).
 
+## 2026-10-15 — prompts/hugginggpt-4stage.md (mới, bóc tách)
+
+Prompt tham khảo 4-stage orchestration từ microsoft/JARVIS (MIT): trích nguyên văn
+`tprompt`/`prompt` của HuggingGPT (task planning, model selection, response generation),
+kèm ghi chú port sang chat model + structured output (bỏ `logit_bias` thủ công) và
+cảnh báo few-shot demo gốc có lỗi JSON. Tài liệu tham khảo, không phải policy chạy.
+
 ## 2026-10-15 — prompts/jarvis-pipeline-system.md (mới)
 
 System prompt dùng lại được cho audit/harden pipeline: task envelope,
