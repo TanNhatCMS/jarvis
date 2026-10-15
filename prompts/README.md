@@ -10,6 +10,7 @@ Các system prompt dùng lại được cho JARVIS — phiên bản có kiểm s
 | `jarvis-setup.md` | Agent tự cài đặt JARVIS trên máy của mình: khảo sát → clone → install → verify tests → đăng ký 4 workflows → báo cáo trung thực. Có khối **one-throw** ở đầu file — chỉ cần copy/paste cho agent là nó tự bootstrap toàn bộ |
 | `jarvis-setup-throw.md` | Bản one-throw độc lập — chỉ cần ném file này (hoặc raw URL của nó) cho agent, không cần copy khối text |
 | `hugginggpt-4stage.md` | Prompt tham khảo: 4-stage orchestration của HuggingGPT (microsoft/JARVIS, MIT) — task planning, model selection, task execution, response generation; kèm ghi chú port sang chat model hiện tại |
+| `bot-templates/` | 14 bot brief template (Anil-matcha/awesome-muse-connectors, MIT) — chief-of-staff, research-brief, inbox-triage, github-release-manager… mỗi template có prompt copy-paste + first supervised run |
 
 ## Quy tắc
 
