@@ -28,7 +28,7 @@ File này là bản kê attribution tập trung của repo.
 | web-scrape | `web-scrape` | [firecrawl/firecrawl](https://github.com/firecrawl/firecrawl) | AGPL-3.0 (chỉ dùng như dịch vụ ngoài — xem ghi chú) |
 | serena | `serena` | [oraios/serena](https://github.com/oraios/serena) | GPL-3.0-or-later (tool chạy độc lập — xem ghi chú) |
 | microsoft/JARVIS | `easytool-skill-author` (skill) + `prompts/hugginggpt-4stage.md`, `docs/task-dag-chaining.md`, `docs/taskbench-evaluation-schema.md` (tài liệu tham khảo) | [microsoft/JARVIS](https://github.com/microsoft/JARVIS) | MIT |
-| animated-short-film | `animated-short-film` (SKILL.md + `references/` + `examples/`, không lấy `docs/` landing page) + `JARVIS-NOTE.md` (map media-generation→media, TTS→spoken-audio) | [sonlovinbot/Muse-animated-short-film](https://github.com/sonlovinbot/Muse-animated-short-film) (Đặng Hữu Sơn) | MIT |
+| awesome-muse-skills | 1496 skills `skills/ams-*/` + `skills/ams-kw-*/` + `skills/ams-imp-*/` (commit `faf37c0`) + ghi chú tại `skills/awesome-muse-skills/README.md` | [aicodedecode/awesome-muse-skills](https://github.com/aicodedecode/awesome-muse-skills) (kw-port từ [anthropics/knowledge-work-plugins](https://github.com/anthropics/knowledge-work-plugins)) | MIT (originals + một phần imports) / Apache-2.0 (kw-port + một phần imports) |
 
 License trong bảng được kiểm chứng từ GitHub API / file LICENSE của upstream
 ngày 2026-10-15. Copyright thuộc về các tác giả của từng dự án nguồn
