@@ -28,6 +28,7 @@ File này là bản kê attribution tập trung của repo.
 | web-scrape | `web-scrape` | [firecrawl/firecrawl](https://github.com/firecrawl/firecrawl) | AGPL-3.0 (chỉ dùng như dịch vụ ngoài — xem ghi chú) |
 | serena | `serena` | [oraios/serena](https://github.com/oraios/serena) | GPL-3.0-or-later (tool chạy độc lập — xem ghi chú) |
 | microsoft/JARVIS | `easytool-skill-author` (skill) + `prompts/hugginggpt-4stage.md`, `docs/task-dag-chaining.md`, `docs/taskbench-evaluation-schema.md` (tài liệu tham khảo) | [microsoft/JARVIS](https://github.com/microsoft/JARVIS) | MIT |
+| muse-connectors | 158 skills `skills/muse-connector-*/` (bóc tách nguyên văn, commit `0ffbcc0`) + ghi chú tại `skills/muse-connectors/README.md` | [Anil-matcha/awesome-muse-connectors](https://github.com/Anil-matcha/awesome-muse-connectors) (150 skill copy từ [bluman1/muse-connectors](https://github.com/bluman1/muse-connectors) @ `6e31fd4`) | MIT (dual: `skills/muse-connectors/LICENSE` cho 150 skill copy; root LICENSE cho 8 connector Anil tự thêm) |
 
 License trong bảng được kiểm chứng từ GitHub API / file LICENSE của upstream
 ngày 2026-10-15. Copyright thuộc về các tác giả của từng dự án nguồn
