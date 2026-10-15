@@ -20,7 +20,7 @@ File này là bản kê attribution tập trung của repo.
 | anthropics | `anthropics-mcp-builder`, `anthropics-skill-creator` | [anthropics/skills](https://github.com/anthropics/skills) | Apache-2.0 |
 | addyosmani | `addyosmani-api-design`, `addyosmani-security`, `addyosmani-observability`, `addyosmani-constraints`, `addyosmani-performance` | [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills) | MIT |
 | mattpocock | `mattpocock-grill-docs`, `mattpocock-domain-model`, `mattpocock-wayfinder`, `mattpocock-triage` | [mattpocock/skills](https://github.com/mattpocock/skills) | MIT |
-| caveman | `caveman` | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman) | Apache-2.0 |
+| caveman | `caveman` | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman) | Apache-2.0 (kể từ v3.0.0 — xem ghi chú) |
 | headroom | `headroom` | [roman-ryzenadvanced/headroom-skill](https://github.com/roman-ryzenadvanced/headroom-skill) | Apache-2.0 |
 | rtk | `rtk` | [rtk-ai/rtk](https://github.com/rtk-ai/rtk) | Apache-2.0 |
 | dev-best-practices | `dev-best-practices` | [MG-Cafe/claude-code-best-practices](https://github.com/MG-Cafe/claude-code-best-practices) | MIT |
@@ -42,9 +42,12 @@ ngày 2026-10-15. Copyright thuộc về các tác giả của từng dự án n
   `LICENSE.txt` trong từng skill (`skills/mcp-builder/LICENSE.txt`,
   `skills/skill-creator/LICENSE.txt`). Hai file trong repo này là bản copy
   nguyên văn, đã đối chiếu đúng.
-- **caveman (Apache-2.0):** file `skills/caveman/LICENSE` trước đây ghi nhầm
-  "MIT License" — đã thay bằng toàn văn Apache-2.0 đúng với upstream
-  (2026-10-15).
+- **caveman:** upstream có 2 file license — `LICENSE` (Apache-2.0, áp dụng cho
+  toàn bộ repo kể từ v3.0.0, bao gồm cả skill — xem `LICENSING.md` của upstream)
+  và `LICENSE-MIT` (chỉ lưu giữ cho các phiên bản skill trước v3.0.0).
+  Skill trong repo này giống từng byte với upstream `main` (v4.x, gồm các commit
+  sau 3.0.0) nên áp dụng **Apache-2.0**. File `skills/caveman/LICENSE` trước đây
+  chép nhầm text MIT — đã thay bằng toàn văn Apache-2.0 (2026-10-15).
 - **serena:** skill này **chỉ là tài liệu wrapper** — không copy bất kỳ code nào
   của Serena vào repo. Serena application là GPL-3.0-or-later, chạy như một tool
   độc lập ngoài repo, nên GPL không lây sang repo này. (Chi tiết phân tách
