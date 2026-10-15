@@ -208,6 +208,7 @@ workflow.launch("spec-team", {
 - Benchmark trước/sau khi đổi prompt: `node docs/tests/benchmark.mjs`.
 - Quy trình learning loop (không tự sửa policy sau mỗi run):
   [docs/learning-loop.md](docs/learning-loop.md) · [docs/prompts/CHANGELOG.md](docs/prompts/CHANGELOG.md).
+- System prompt audit/harden pipeline (dùng lại được): [prompts/jarvis-pipeline-system.md](prompts/jarvis-pipeline-system.md).
 - CI: [.github/workflows/validate.yml](.github/workflows/validate.yml)
   (frontmatter skills + syntax workflow + tests + benchmark).
 

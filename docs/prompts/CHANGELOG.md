@@ -3,6 +3,14 @@
 Mọi thay đổi prompt/policy của workflow đều ghi ở đây (kèm version).
 Xem quy trình tại [../learning-loop.md](../learning-loop.md).
 
+## 2026-10-15 — prompts/jarvis-pipeline-system.md (mới)
+
+System prompt dùng lại được cho audit/harden pipeline: task envelope,
+18-phase (discovery → hypothesis → trust boundary → fail-closed gates →
+regression → adversarial review → pre-mortem → final verification),
+instruction/data boundary, completion gate DONE/PARTIAL/BLOCKED, và format
+báo cáo chuẩn 13 mục. Bổ sung theo yêu cầu trực tiếp của user.
+
 ## 2.0.0 — 2026-10-15
 
 Tất cả workflow (`dev-team.js`, `jarvis.js`, `spec-team.js`):
