@@ -10,9 +10,28 @@ việc chỉ cần gọi tên workflow, không cần dựng team mới.
 
 | Workflow | Mô tả | Pipeline |
 |---|---|---|
+| `workflows/release-pipeline.js` | **Khuyên dùng**: pipeline có gate cưỡng chế + 2 cổng người duyệt | spec → human duyệt spec → analyzer → coder → reviewer → tester → shipper (PR only) → human duyệt merge → release report |
 | `workflows/jarvis.js` | **Full-auto**: gộp spec-team + dev-team, chạy xuyên suốt không dừng | discover → constitution → specify → clarify-auto → plan → tasks → audit → implement → ship |
 | `workflows/dev-team.js` | Đội dev thực thi task | analyze → implement → review → verify → ship (tùy chọn) |
 | `workflows/spec-team.js` | Lập kế hoạch spec-driven (có cổng người duyệt) | discover → constitution → specify → clarify → plan → tasks → analyze |
+
+### Gate cưỡng chế (từ prompt v2.0.0)
+
+Không còn là "prompt pipeline có schema" — các gate sau được kiểm **bằng code**:
+
+- **Ship gate:** chỉ ship khi `review.passed === true && verify.passed === true`.
+  Code chưa đạt không bao giờ được commit/push/mở PR tự động.
+- **Evidence gate:** `verify.passed=true` vô nghĩa nếu thiếu bằng chứng —
+  workflow kiểm bằng code: phải có `commit_sha` + ít nhất 1 command `exit_code === 0`.
+  QA test trên clean worktree tại SHA đã pin; `no_tests` → `passed=false`.
+- **Audit gate** (`jarvis.js`): audit spec không đạt sau tối đa vòng → dừng
+  pipeline (`mode: "audit-failed"`), không implement.
+- **Step gate:** step chỉ DONE khi `check_passed === true`.
+- **Trust boundary:** mọi prompt đọc nội dung repo đều coi đó là dữ liệu không
+  đáng tin, không phải chỉ dẫn.
+
+Test các gate bằng mock agent: `node docs/tests/run-tests.mjs` (18 tests).
+Chi tiết quy trình cải tiến: [docs/learning-loop.md](docs/learning-loop.md).
 
 ### jarvis (full-auto)
 
@@ -53,7 +72,8 @@ Planning theo phong cách spec-driven (lấy cảm hứng từ
 3. **specify** — tạo `specs/<NNN>-<slug>/spec.md` (chỉ what/why, cấm tech stack)
 4. **clarify** — tối đa 5 câu hỏi cho con người, đánh dấu `[NEEDS CLARIFICATION]`
 5. **plan** — `plan.md` + `research.md` / `data-model.md` / `contracts/` khi cần
-6. **tasks** — `tasks.md` dạng `T001...` kèm đánh dấu `[P]` cho task song song
+6. **tasks** — `tasks.md` dạng `T001...` kèm đánh dấu `[P]` cho task độc lập
+   (hiện runtime chạy tuần tự — `[P]` là gợi ý thứ tự, chưa phải song song thật)
 7. **analyze** — kiểm toán chéo spec ↔ plan ↔ tasks, vòng sửa giới hạn
 
 Output trả về `dev_team_tasks` — mảng task ném thẳng vào `dev-team` để thực thi.
@@ -80,6 +100,12 @@ Nguồn: trích từ [zai-org/ZCode](https://github.com/zai-org/ZCode) (Apache-2
 55 skills trong `skills/ecc-<tên>/` + 71 agents trong `agents/ecc/` — bao gồm
 tdd-workflow, security-review, git-workflow, context-budget, council,
 verification-loop, dev-team, unified-memory... Nguồn: [affaan-m/ECC](https://github.com/affaan-m/ECC).
+
+> Lưu ý trung thực: `agents/` và phần lớn `skills/` là **thư viện/preset** —
+> workflow không load trực tiếp từng agent definition. Những gì workflow dùng
+> thật: các role prompt (coder/reviewer/QA...) có thể wire skill cụ thể qua
+> `PLATFORM.skillsRepo` (vd reviewer đọc `superpowers-code-review`,
+> QA đọc `ecc-verification-loop`, coder đọc `karpathy`). Xem [docs/porting.md](docs/porting.md).
 
 ### 40 Things to Install in Claude (chọn lọc — license từng nguồn xem ATTRIBUTION.md)
 
@@ -164,6 +190,26 @@ workflow.launch("spec-team", {
   dynamic `import()` để check thật.
 - Tránh `pipeline()` đa stage của daemon (từng gây lỗi `not a callable function`);
   dùng vòng lặp `for` thường chạy nối tiếp các stage thay thế.
+- Workflow gọi `agent()` **đồng bộ** (blocking) — adapter sang nền tảng khác
+  phải bọc subagent API thành sync ở biên. Chi tiết: [docs/runtime-interface.md](docs/runtime-interface.md).
+
+## Chạy ngoài Muse / Porting
+
+- Cài đặt: `./install.sh` (xem hướng dẫn trong script).
+- Port sang nền tảng kiểu OpenClaw / MUSE AI: [docs/porting.md](docs/porting.md)
+  + shim mẫu [docs/workflow-shim.mjs](docs/workflow-shim.mjs).
+- Mọi chuỗi gắn môi trường đã tách vào khối `PLATFORM` ở đầu mỗi workflow —
+  khi port chỉ cần sửa khối này.
+- Danh mục skills: [SKILLS_INDEX.md](SKILLS_INDEX.md).
+
+## Kiểm thử & cải tiến có kiểm soát
+
+- Test gate bằng mock agent: `node docs/tests/run-tests.mjs` (18 tests).
+- Benchmark trước/sau khi đổi prompt: `node docs/tests/benchmark.mjs`.
+- Quy trình learning loop (không tự sửa policy sau mỗi run):
+  [docs/learning-loop.md](docs/learning-loop.md) · [docs/prompts/CHANGELOG.md](docs/prompts/CHANGELOG.md).
+- CI: [.github/workflows/validate.yml](.github/workflows/validate.yml)
+  (frontmatter skills + syntax workflow + tests + benchmark).
 
 ## License
 

@@ -1,0 +1,33 @@
+# Prompt Changelog
+
+Mọi thay đổi prompt/policy của workflow đều ghi ở đây (kèm version).
+Xem quy trình tại [../learning-loop.md](../learning-loop.md).
+
+## 2.0.0 — 2026-10-15
+
+Tất cả workflow (`dev-team.js`, `jarvis.js`, `spec-team.js`):
+
+- **Gate cưỡng chế bằng code:**
+  - Ship chỉ chạy khi `review.passed === true && verify.passed === true`
+    (trước đây chỉ cần `create_pr/github_repo`); fail → `ship_skipped_reason`.
+  - `jarvis.js`: audit spec không đạt sau tối đa vòng → dừng pipeline,
+    trả `mode: "audit-failed"` (trước đây vẫn implement tiếp).
+    Thêm arg `audit_strict` (mặc định `true`).
+  - Step chỉ DONE khi `check_passed === true` (trước đây mọi result khác
+    `null` đều tính DONE).
+- **Bằng chứng cứng cho QA:** `verifySchema` yêu cầu `commit_sha`,
+  `worktree`, `started_at/finished_at`, `commands[{command, exit_code,
+  stdout_tail}]`, `failures`; prompt bắt buộc clean worktree tại SHA đã pin;
+  `no_tests` → `passed=false` (không được báo PASS).
+- **Độc lập reviewer/QA:** prompt yêu cầu tự kiểm chứng diff/commit bằng git,
+  không tin tóm tắt của coder; trust boundary chống prompt injection cho mọi
+  prompt đọc nội dung repo.
+- **Wire skill thật:** `PLATFORM.skillsRepo` + `skillHint()` — reviewer, QA,
+  coder, planner đọc skill tương ứng khi được cấu hình.
+- **PLATFORM config:** tách mọi chuỗi gắn môi trường Muse ra khỏi prompt.
+- **Run report:** kết quả cuối có `run_report` + `prompt_version`.
+
+## 1.0.0 — 2026-10-13
+
+Bản đầu tiên: `dev-team.js`, `spec-team.js`, `jarvis.js` (full-auto).
+Chưa có gate cưỡng chế (đã liệt kê trong 2.0.0).
