@@ -7,6 +7,7 @@ Các system prompt dùng lại được cho JARVIS — phiên bản có kiểm s
 | File | Dùng cho |
 |---|---|
 | `jarvis-pipeline-system.md` | Audit/harden pipeline: discovery → hypothesis → trust boundary → fail-closed gates → regression test → adversarial review → pre-mortem → final verification → báo cáo theo format chuẩn |
+| `jarvis-setup.md` | Agent tự cài đặt JARVIS trên máy của mình: khảo sát → clone → install → verify tests → đăng ký 4 workflows → báo cáo trung thực |
 
 ## Quy tắc
 
