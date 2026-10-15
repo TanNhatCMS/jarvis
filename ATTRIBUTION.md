@@ -27,6 +27,7 @@ File này là bản kê attribution tập trung của repo.
 | codex-review | `codex-review` | [openai/codex-plugin-cc](https://github.com/openai/codex-plugin-cc) | Apache-2.0 |
 | web-scrape | `web-scrape` | [firecrawl/firecrawl](https://github.com/firecrawl/firecrawl) | AGPL-3.0 (chỉ dùng như dịch vụ ngoài — xem ghi chú) |
 | serena | `serena` | [oraios/serena](https://github.com/oraios/serena) | GPL-3.0-or-later (tool chạy độc lập — xem ghi chú) |
+| microsoft/JARVIS | `easytool-skill-author` (skill) + `prompts/hugginggpt-4stage.md`, `docs/task-dag-chaining.md`, `docs/taskbench-evaluation-schema.md` (tài liệu tham khảo) | [microsoft/JARVIS](https://github.com/microsoft/JARVIS) | MIT |
 
 License trong bảng được kiểm chứng từ GitHub API / file LICENSE của upstream
 ngày 2026-10-15. Copyright thuộc về các tác giả của từng dự án nguồn

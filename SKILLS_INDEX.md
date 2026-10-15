@@ -1,6 +1,6 @@
 # SKILLS INDEX
 
-Danh mục 85 skills trong `skills/`. License từng nguồn: xem [ATTRIBUTION.md](ATTRIBUTION.md).
+Danh mục 86 skills trong `skills/`. License từng nguồn: xem [ATTRIBUTION.md](ATTRIBUTION.md).
 
 > Lưu ý: `skills/ecc-dev-team/` là skill của ECC (cho Claude Code), **khác** với
 > `workflows/dev-team.js` (workflow điều phối của JARVIS). Hai thứ trùng tên nhưng độc lập.
@@ -104,3 +104,9 @@ Danh mục 85 skills trong `skills/`. License từng nguồn: xem [ATTRIBUTION.m
 | `superpowers-tdd` | Use when implementing any feature or bugfix, before writing implementation code |
 | `taste-design` | tasteskill v2, the anti-slop frontend skill. Art direction for websites, distilled from a study of 247 curated gallery sites (One Page Love, |
 | `web-scrape` |  |
+
+## Microsoft JARVIS (1 skill — microsoft/JARVIS, MIT)
+
+| Skill | Mô tả |
+|---|---|
+| `easytool-skill-author` | Rewrite verbose tool/API docs into concise, standardized tool-use instructions with examples. Use when onboarding a new MCP server/CLI/API as a skill or fixing wrong tool/parameter choices. |
