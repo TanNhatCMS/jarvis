@@ -1,6 +1,6 @@
 # SKILLS INDEX
 
-Danh mục 1741 skills trong `skills/`. License từng nguồn: xem [ATTRIBUTION.md](ATTRIBUTION.md).
+Danh mục 1742 skills trong `skills/`. License từng nguồn: xem [ATTRIBUTION.md](ATTRIBUTION.md).
 
 > Ghi chú: main ghi 87 là thiếu (đã merge PR #5: +158 connectors, PR #6: +1 skill → thực tế 245 trước PR này).
 
@@ -131,3 +131,9 @@ Không lấy: 1065 imports không rõ license, 10 proprietary, 79 license mập 
 | Skill | Mô tả |
 |---|---|
 | `animated-short-film` | Dựng phim hoạt hình ngắn từ đầu đến cuối: thu thập yêu cầu (thời lượng, ngôn ngữ, tỷ lệ khung hình), vẽ character sheets, chốt story bible, keyframes, mega prompt từng cảnh, generate video, làm VO, dựng phim bằng ffmpeg. Kèm ghi chú adapt cho JARVIS (`JARVIS-NOTE.md`). |
+
+## Grounded Humanizer (1 skill — monasprox/humanizer, MIT)
+
+| Skill | Mô tả |
+|---|---|
+| `local-grounded-humanizer` | Hội thoại có căn cứ và tiếng Việt: đọc cả chuỗi trao đổi, giữ lập trường, phát ngôn từ đúng cương vị chịu trách nhiệm (operational voice), xưng hô/trợ từ/vùng miền/chat số dựa trên nghiên cứu ngôn ngữ học. Không dùng để qua mặt AI detector hay giả mạo người thật. Bóc từ monasprox/humanizer @ `4784ca7` (mở rộng blader/humanizer); không lấy `agents/openai.yaml`. |

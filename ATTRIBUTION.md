@@ -31,6 +31,7 @@ File này là bản kê attribution tập trung của repo.
 | muse-connectors | 158 skills `skills/muse-connector-*/` (bóc tách nguyên văn, commit `0ffbcc0`) + ghi chú tại `skills/muse-connectors/README.md` + 14 bot brief template `prompts/bot-templates/` (của Anil-matcha, copy nguyên văn) | [Anil-matcha/awesome-muse-connectors](https://github.com/Anil-matcha/awesome-muse-connectors) (150 skill copy từ [bluman1/muse-connectors](https://github.com/bluman1/muse-connectors) @ `6e31fd4`) | MIT (dual: `skills/muse-connectors/LICENSE` cho 150 skill copy; root LICENSE cho 8 connector + templates của Anil) |
 | awesome-muse-skills | 1496 skills `skills/ams-*/` + `skills/ams-kw-*/` + `skills/ams-imp-*/` (commit `faf37c0`) + ghi chú tại `skills/awesome-muse-skills/README.md` | [aicodedecode/awesome-muse-skills](https://github.com/aicodedecode/awesome-muse-skills) (kw-port từ [anthropics/knowledge-work-plugins](https://github.com/anthropics/knowledge-work-plugins)) | MIT (originals + một phần imports) / Apache-2.0 (kw-port + một phần imports) |
 | animated-short-film | `animated-short-film` (SKILL.md + `references/` + `examples/`, không lấy `docs/` landing page) + `JARVIS-NOTE.md` (map media-generation→media, TTS→spoken-audio) | [sonlovinbot/Muse-animated-short-film](https://github.com/sonlovinbot/Muse-animated-short-film) (Đặng Hữu Sơn) | MIT |
+| grounded-humanizer | `local-grounded-humanizer` (SKILL.md + `references/` 7 file + `evals/behavior-cases.md`, commit `4784ca7`; chỉ đổi frontmatter `name`, không lấy `agents/openai.yaml`) | [monasprox/humanizer](https://github.com/monasprox/humanizer) (mở rộng từ [blader/humanizer](https://github.com/blader/humanizer)) | MIT |
 
 License trong bảng được kiểm chứng từ GitHub API / file LICENSE của upstream
 ngày 2026-10-15. Copyright thuộc về các tác giả của từng dự án nguồn
@@ -59,6 +60,13 @@ ngày 2026-10-15. Copyright thuộc về các tác giả của từng dự án n
   xem file `LICENSE` trong repo gốc.)
 - **web-scrape / firecrawl:** skill chỉ là tài liệu hướng dẫn gọi Firecrawl API
   (dịch vụ bên ngoài), không chứa code của `firecrawl/firecrawl` (AGPL-3.0).
+- **grounded-humanizer (MIT):** bóc từ monasprox/humanizer @ `4784ca7`
+  (2026-10-10), bản mở rộng của blader/humanizer. License MIT dual-copyright
+  (Siqi Chen 2025 + Grounded Humanizer contributors 2026) — file LICENSE copy
+  nguyên văn. Thân SKILL.md nguyên văn, chỉ đổi frontmatter `name`
+  (`humanizer` → `grounded-humanizer`, tránh đè `ams-humanizer`) và thêm
+  `extracted_from`. Không lấy `agents/openai.yaml` (manifest agent cho nền tảng
+  OpenAI-style, không phù hợp chuẩn repo).
   Vì không phân phối code AGPL nên AGPL không áp đặt nghĩa vụ lên repo này.
   Nếu sau này ai vendor code Firecrawl vào repo thì phải tuân thủ AGPL-3.0.
 - **File LICENSE riêng trong từng skill:** hiện có ở `anthropics-mcp-builder`,
