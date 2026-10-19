@@ -1,11 +1,11 @@
-<!--
-Attribution: review prompts adapted from openai/codex-plugin-cc (Apache-2.0).
-Adapted for JARVIS: replaced Claude Code plugin machinery with direct `codex exec` calls.
--->
 ---
 name: codex-review
 description: "Review code with a second model via the Codex CLI: standard review or adversarial review that challenges design choices. Use after implementing a feature, before opening a PR, or when you want an independent second opinion — the dev-team review phase uses the same model, this uses a different one."
 ---
+<!--
+Attribution: review prompts adapted from openai/codex-plugin-cc (Apache-2.0).
+Adapted for JARVIS: replaced Claude Code plugin machinery with direct `codex exec` calls.
+-->
 
 # Code Review via Codex CLI
 
