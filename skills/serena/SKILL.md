@@ -1,12 +1,12 @@
+---
+name: serena
+description: "Semantic code navigation and precise symbol-level edits via Serena LSP (40+ languages): find symbols, references, callers/callees, rename/move across files. Use for refactors and blast-radius analysis when grep is too blunt. Serena runs as an independent tool (GPL-3.0)."
+---
 <!--
 JARVIS skill: semantic code intelligence via Serena (oraios/serena, GPL-3.0).
 Serena is used as an INDEPENDENT TOOL — its code is not copied into any MIT repo.
 Binary: ~/workspace/.venv-tools/bin/serena
 -->
----
-name: serena
-description: "Semantic code navigation and precise symbol-level edits via Serena LSP (40+ languages): find symbols, references, callers/callees, rename/move across files. Use for refactors and blast-radius analysis when grep is too blunt. Serena runs as an independent tool (GPL-3.0)."
----
 
 # Serena — Semantic Code Toolkit
 

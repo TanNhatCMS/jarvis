@@ -1,11 +1,11 @@
-<!--
-Attribution: concept from rtk-ai/rtk (Apache-2.0) — "Rust Token Killer".
-This is a thin JARVIS wrapper skill; the rtk binary is a separate install.
--->
 ---
 name: rtk
 description: "Trim noisy dev-command output (git diff, tsc, test logs) before it fills agent context, using the rtk binary. Use when a command's output is long and repetitive — saves 60-90% tokens. Do NOT use when another tool or gate parses the raw output."
 ---
+<!--
+Attribution: concept from rtk-ai/rtk (Apache-2.0) — "Rust Token Killer".
+This is a thin JARVIS wrapper skill; the rtk binary is a separate install.
+-->
 
 # rtk — Trim Command Output
 

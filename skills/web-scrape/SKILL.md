@@ -1,13 +1,13 @@
+---
+name: web-scrape
+description: "Turn web pages into LLM-ready markdown via the Firecrawl API (renders JS, anti-bot handling). Use when browser_open/fetch fails on JS-heavy pages, or when you need clean markdown/structured extraction from a site. Requires FIRECRAWL_API_KEY."
+---
 <!--
 JARVIS skill: web scraping via Firecrawl API (firecrawl.dev).
 Firecrawl core is AGPL-3.0; this skill only documents the hosted HTTP API.
 Needs a FIRECRAWL_API_KEY (free tier ~1000 credits/month, no card).
 Store the key in the Secure Vault, never hardcode it.
 -->
----
-name: web-scrape
-description: "Turn web pages into LLM-ready markdown via the Firecrawl API (renders JS, anti-bot handling). Use when browser_open/fetch fails on JS-heavy pages, or when you need clean markdown/structured extraction from a site. Requires FIRECRAWL_API_KEY."
----
 
 # Web Scraping via Firecrawl
 
