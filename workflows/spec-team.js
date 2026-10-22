@@ -190,7 +190,7 @@ const discoverSchema = {
 if (discover && !feature && !specDir) {
   phase("discover");
   log("Khám phá repo để đề xuất tính năng.");
-  const discovery = agent(
+  const discovery = await agent(
     "Bạn là product strategist.\n" + contextBlock + "\n\n" +
     "Nhiệm vụ: phân tích repo để đề xuất tối đa " + discoverCount + " tính năng MỚI đáng làm nhất. Đọc theo thứ tự:\n" +
     "1. README, docs tầm nhìn/roadmap, CHANGELOG (hiểu sản phẩm đang đi đâu).\n" +
@@ -229,7 +229,7 @@ let constitution = null;
 if (skipConstitution) {
   log("Bỏ qua constitution theo yêu cầu.");
 } else {
-  constitution = agent(
+  constitution = await agent(
     "Bạn là thủ thư kỹ thuật.\n" + contextBlock + "\n\n" +
     "Nhiệm vụ: tìm constitution (nguyên tắc dự án) hiện có — kiểm tra .specify/memory/constitution.md, constitution.md, docs/constitution.md và các file tương tự trong repo. " +
     "Nếu đã có: DÙNG LUÔN, không viết lại; trả về path, version (nếu có) và tóm tắt các nguyên tắc chính. " +
@@ -248,7 +248,7 @@ if (specDir) {
     const answersText = clarifyAnswers.map(function (a, i) {
       return (i + 1) + ". Q: " + (a.question || a.id || "") + "\n   A: " + (a.answer || "");
     }).join("\n");
-    spec = agent(
+    spec = await agent(
       "Bạn là spec writer.\n" + contextBlock + "\n\n" +
       "Nhiệm vụ: đọc spec hiện có tại " + specDir + " (spec.md), rồi ÁP DỤNG các câu trả lời sau vào đúng mục của spec: \n" +
       answersText + "\n\n" +
@@ -257,7 +257,7 @@ if (specDir) {
       { key: "apply-answers", label: "Áp dụng câu trả lời vào spec", phase: "specify", timeoutMs: 900000, schema: specSchema }
     );
   } else {
-    spec = agent(
+    spec = await agent(
       "Bạn là spec writer.\n" + contextBlock + "\n\n" +
       "Nhiệm vụ: đọc spec hiện có tại " + specDir + " (spec.md) và tóm tắt lại theo đúng schema " +
       "(spec_dir, spec_number, slug, path, summary, acceptance_criteria). Không sửa file ở bước này.",
@@ -265,7 +265,7 @@ if (specDir) {
     );
   }
 } else {
-  spec = agent(
+  spec = await agent(
     "Bạn là spec writer.\n" + contextBlock + "\n\n" +
     "Nhiệm vụ: tạo spec MỚI cho feature. Các bước:\n" +
     "1. Liệt kê thư mục specs/ để xác định số NNN tiếp theo (3 chữ số, nối tiếp số lớn nhất).\n" +
@@ -280,7 +280,7 @@ if (specDir) {
 log("Spec: " + spec.spec_dir);
 
 phase("clarify");
-const clarify = agent(
+const clarify = await agent(
   "Bạn là người phỏng vấn yêu cầu khó tính.\n" + contextBlock + "\n\n" +
   "Nhiệm vụ: đọc spec tại " + spec.path + " và tìm những điểm MƠ HỒ mà nếu hiểu sai sẽ làm sai cả plan " +
   "(ví dụ: đối tượng người dùng chưa rõ, hành vi biên chưa định nghĩa, tiêu chí nghiệm thu không đo được, xung đột giữa các yêu cầu).\n" +
@@ -293,7 +293,7 @@ const clarify = agent(
 log("Clarify: " + (clarify.questions || []).length + " câu hỏi cần con người quyết.");
 
 phase("plan");
-const plan = agent(
+const plan = await agent(
   "Bạn là kiến trúc sư phần mềm.\n" + contextBlock + "\n\n" +
   PLATFORM.trustBoundary + "\n" +
   skillHint("skills/ecc-architecture-decision-records/SKILL.md") + "\n" +
@@ -311,7 +311,7 @@ const plan = agent(
 log("Plan: " + (plan.files || []).join(", "));
 
 phase("tasks");
-const tasks = agent(
+const tasks = await agent(
   "Bạn là người chia task.\n" + contextBlock + "\n\n" +
   "Đầu vào:\n" +
   "- Spec: " + spec.path + "\n" +
@@ -329,7 +329,7 @@ let analyze = null;
 let aAttempt = 0;
 while (aAttempt <= maxRepair) {
   aAttempt = aAttempt + 1;
-  analyze = agent(
+  analyze = await agent(
     "Bạn là kiểm toán viên tài liệu khó tính.\n" + contextBlock + "\n\n" +
     "Nhiệm vụ: đối chiếu chéo 3 artifact:\n" +
     "- Spec: " + spec.path + "\n" +
@@ -343,7 +343,7 @@ while (aAttempt <= maxRepair) {
   );
   if (analyze.passed || aAttempt > maxRepair) break;
   log("Analyze vòng " + aAttempt + " chưa đạt — sửa artifacts.");
-  agent(
+  await agent(
     "Bạn là spec writer.\n" + contextBlock + "\n\n" +
     "Kiểm toán viên phát hiện các vấn đề sau trong bộ artifact tại " + spec.spec_dir + ":\n- " +
     (analyze.issues || []).join("\n- ") + "\n\n" +

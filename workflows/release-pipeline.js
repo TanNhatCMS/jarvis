@@ -151,7 +151,7 @@ const contextBlock =
 phase("spec");
 log("Stage spec: viết spec + acceptance criteria.");
 
-const spec = agent(
+const spec = await agent(
   "Bạn là spec writer.\n" + contextBlock + "\n\n" +
   PLATFORM.trustBoundary + "\n\n" +
   "Nhiệm vụ: biến request thành spec rõ ràng, lưu thành file spec.md trong thư mục làm việc " +
@@ -185,7 +185,7 @@ log("Spec đã được duyệt — tiếp tục.");
 
 // ================= Stage 2: ANALYZER =================
 phase("analyzer");
-const analysis = agent(
+const analysis = await agent(
   "Bạn là kiến trúc sư phần mềm.\n" + contextBlock + "\n\n" +
   PLATFORM.trustBoundary + "\n" +
   skillHint("skills/ecc-architecture-decision-records/SKILL.md") + "\n" +
@@ -199,8 +199,8 @@ const analysis = agent(
 
 // ================= Stage 3: CODER =================
 phase("coder");
-const branchName = branch || ("release/" + Date.now().toString(36) + "-<slug-ngắn>");
-const code = agent(
+const branchName = branch || "release/pl-<slug-ngắn>";
+const code = await agent(
   "Bạn là coder.\n" + contextBlock + "\n\n" +
   "Kế hoạch: " + analysis.summary + "\n" +
   "Impacted files: " + (analysis.impacted_files || []).join(", ") + "\n" +
@@ -217,7 +217,7 @@ const code = agent(
 
 // ================= Stage 4: REVIEWER (spec + diff, độc lập) =================
 phase("reviewer");
-let review = agent(
+let review = await agent(
   "Bạn là reviewer khó tính, ĐỘC LẬP với coder — không tin mù quáng bất kỳ tóm tắt nào của coder.\n" + contextBlock + "\n\n" +
   "Spec (nguồn chân lý duy nhất): " + spec.spec_path + "\n" +
   "Acceptance criteria:\n- " + (spec.acceptance_criteria || []).join("\n- ") + "\n" +
@@ -234,14 +234,14 @@ let review = agent(
 let rAttempt = 1;
 while (!review.passed && rAttempt <= maxRepair) {
   log("Review vòng " + rAttempt + " chưa đạt — coder sửa blocking findings.");
-  agent(
+  await agent(
     "Bạn là coder.\n" + contextBlock + "\n\n" +
     "Reviewer yêu cầu sửa các điểm BLOCKING sau (trên nhánh " + code.branch + "):\n- " + (review.blocking || []).join("\n- ") + "\n\n" +
     "Hãy sửa đúng các điểm trên, giữ nguyên scope, commit tiếp vào cùng nhánh. Trả về đúng schema code." + JSON_TAIL,
     { key: "rp-repair-" + rAttempt, label: "Sửa blocking findings vòng " + rAttempt, phase: "coder", timeoutMs: 1800000, schema: codeSchema }
   );
   rAttempt = rAttempt + 1;
-  review = agent(
+  review = await agent(
     "Bạn là reviewer khó tính, ĐỘC LẬP với coder.\n" + contextBlock + "\n\n" +
     "Spec: " + spec.spec_path + " | Nhánh: " + code.branch + "\n" +
     "Đây là vòng review " + rAttempt + " sau khi coder sửa: " + (review.blocking || []).join("; ") + "\n" +
@@ -267,7 +267,7 @@ if (!review.passed) {
 
 // ================= Stage 5: TESTER (clean checkout + evidence) =================
 phase("tester");
-const test = agent(
+const test = await agent(
   "Bạn là tester ĐỘC LẬP — không tin bất kỳ claim nào của coder/reviewer nếu chưa tự chạy.\n" + contextBlock + "\n\n" +
   "Acceptance criteria (nguồn chân lý):\n- " + (spec.acceptance_criteria || []).join("\n- ") + "\n" +
   "Commit cần kiểm thử: " + code.commit_sha + " (nhánh " + code.branch + ")\n\n" +
@@ -317,7 +317,7 @@ phase("shipper");
 let ship = null;
 if (githubRepo) {
   log("Stage shipper: mở PR (không merge, không deploy).");
-  ship = agent(
+  ship = await agent(
     "Bạn là release engineer.\n" + contextBlock + "\n\n" +
     "Nhánh: " + code.branch + " | Base: " + (baseBranch || "main/master") + " | Repo: " + githubRepo + "\n" +
     "Spec: " + spec.spec_path + " | Commit đã kiểm thử: " + test.commit_sha + "\n\n" +

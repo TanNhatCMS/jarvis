@@ -1,15 +1,19 @@
 // workflow-shim.mjs — chạy workflow JARVIS ngoài Muse workflow daemon.
 //
-// LƯU Ý QUAN TRỌNG: workflow script gọi `agent()` ĐỒNG BỘ (blocking) —
-// daemon đợi subagent xong mới trả object về. Shim này giữ nguyên ngữ nghĩa
-// đó: spawnAgentSync PHẢI là hàm sync (ví dụ gọi CLI agent qua execFileSync).
+// LƯU Ý QUAN TRỌNG: `agent()` của runtime hiện tại là ASYNC — workflow script
+// bắt buộc `await agent(...)` (kiểm chứng bằng probe + e2e ngày 2026-10-22:
+// không await thì JS nhận Promise, đọc field nào cũng undefined, gate
+// fail-closed dừng pipeline). Shim này giữ đúng ngữ nghĩa đó: agent của shim
+// là async function; backend spawn có thể đồng bộ (execFileSync) hoặc async —
+// shim await cả hai.
 //
 // Cách dùng:
 //   node docs/workflow-shim.mjs workflows/dev-team.js --args '{"task":"...","repo":"..."}' --agent-module ./my-agent.mjs
 //   node docs/workflow-shim.mjs workflows/dev-team.js --args-file args.json --agent-cmd "opencode run --format json"
 //   node docs/workflow-shim.mjs workflows/dev-team.js --dry-run   (không gọi AI: chỉ check load + luồng điều phối)
 //
-// --agent-module: module ESM/CJS export `function spawnAgentSync(prompt, opts)` -> string
+// --agent-module: module ESM/CJS export `spawnAgentSync(prompt, opts)` (sync hoặc
+//   async đều được, shim await kết quả) -> string
 //   (message cuối của subagent, chứa đúng một JSON object).
 // --agent-cmd: command template; shim truyền prompt qua stdin (execFileSync), đọc stdout.
 //   Ví dụ: --agent-cmd "python3 my_agent_cli.py"
@@ -42,9 +46,9 @@ const agentModule = getFlag("--agent-module");
 const agentCmd = getFlag("--agent-cmd");
 if (!dryRun && agentModule) {
   const mod = await import(pathToFileURL(agentModule).href);
-  spawnAgentSync = mod.spawnAgentSync || mod.default;
+  spawnAgentSync = mod.spawnAgentSync || mod.spawnAgent || mod.default;
   if (typeof spawnAgentSync !== "function")
-    throw new Error("--agent-module phải export function spawnAgentSync(prompt, opts) (đồng bộ).");
+    throw new Error("--agent-module phải export function spawnAgentSync(prompt, opts) (sync hoặc async).");
 } else if (!dryRun && agentCmd) {
   const [cmd, ...cmdArgs] = agentCmd.split(" ");
   spawnAgentSync = (prompt) =>
@@ -79,10 +83,10 @@ function extractJson(text) {
   return JSON.parse(body.slice(start, end + 1));
 }
 
-const agent = (prompt, opts = {}) => {
+const agent = async (prompt, opts = {}) => {
   calls.push({ key: opts.key, label: opts.label, phase: opts.phase, promptChars: prompt.length });
   if (dryRun) return {}; // chỉ kiểm tra luồng điều phối, không gọi AI thật
-  const raw = String(spawnAgentSync(prompt, opts));
+  const raw = String(await spawnAgentSync(prompt, opts));
   const obj = extractJson(raw);
   const required = (opts.schema && opts.schema.required) || [];
   const missing = required.filter((k) => !(k in obj));
@@ -91,8 +95,10 @@ const agent = (prompt, opts = {}) => {
   return obj;
 };
 
-// Chạy script như function body với 4 globals (agent đồng bộ, đúng ngữ nghĩa daemon).
-const runner = new Function("agent", "args", "phase", "log", `"use strict";\n${src}\n`);
-const result = runner(agent, args, phase, log);
+// Chạy script như async function body với 4 globals (agent async, đúng ngữ
+// nghĩa runtime hiện tại — workflow dùng top-level await + top-level return).
+const AsyncFunction = Object.getPrototypeOf(async function () {}).constructor;
+const runner = new AsyncFunction("agent", "args", "phase", "log", `"use strict";\n${src}\n`);
+const result = await runner(agent, args, phase, log);
 
 console.log(JSON.stringify({ workflow: meta.name, result, agentCalls: calls }, null, 2));

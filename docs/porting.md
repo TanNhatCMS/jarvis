@@ -12,7 +12,7 @@ nền tảng agent khác (kiểu OpenClaw / MUSE AI / CLI agent), bạn cần l�
 ## Cách nhanh nhất: dùng shim mẫu
 
 `docs/workflow-shim.mjs` implement sẵn interface trên Node.js. Bạn chỉ cần
-cung cấp **một** hàm spawn subagent đồng bộ:
+cung cấp **một** hàm spawn subagent (đồng bộ hoặc async — shim `await` cả hai):
 
 ```bash
 # 1) Viết my-agent.mjs export function spawnAgentSync(prompt, opts)
@@ -57,8 +57,11 @@ workflow.
 | CLI agent bất kỳ | wrapper sync qua stdin/stdout | như trên | console |
 | Nền tảng có subagent API bất đồng bộ | bọc bằng `execFileSync` gọi chính CLI của nó, hoặc deasync | như trên | webhook/UI của nền tảng |
 
-Điểm cần chú ý duy nhất: workflow gọi `agent()` **đồng bộ** (daemon block cho
-tới khi subagent xong). Adapter bất đồng bộ phải được bọc thành sync ở biên.
+Điểm cần chú ý duy nhất: workflow gọi `await agent()` — `agent()` của runtime
+hiện tại là **async** (trả Promise; đã kiểm chứng bằng probe + e2e ngày
+2026-10-22 — bản cũ của tài liệu này ghi “đồng bộ” là sai và chính là gốc của
+bug làm cả 4 workflow dừng ở gate). Adapter đồng bộ vẫn dùng được vì shim
+`await` kết quả; adapter bất đồng bộ được hỗ trợ trực tiếp, không cần bọc sync.
 
 ## Khối PLATFORM trong từng workflow
 

@@ -13,13 +13,17 @@ export function extractJson(text) {
 }
 
 // scenario: { respond(key, prompt, opts) -> object | string | throws }
+// QUAN TRỌNG: mock agent PHẢI là async function. Runtime thật trả Promise từ
+// agent() và workflow bắt buộc `await agent(...)`. Mock đồng bộ sẽ che mất
+// regression "quên await" (JS nhận Promise, đọc field ra undefined) — đúng bug
+// đã làm cả 4 workflow dừng ở gate khi chạy e2e thật ngày 2026-10-22.
 export function makeAgent(scenario) {
   const calls = [];
   const prompts = {};
-  const agent = (prompt, opts = {}) => {
+  const agent = async (prompt, opts = {}) => {
     calls.push(opts.key);
     prompts[opts.key] = prompt;
-    const raw = scenario.respond(opts.key, prompt, opts);
+    const raw = await scenario.respond(opts.key, prompt, opts);
     const text = typeof raw === "string" ? raw : JSON.stringify(raw);
     const obj = extractJson(text);
     const required = (opts.schema && opts.schema.required) || [];
@@ -49,11 +53,14 @@ export async function runWorkflow(path, args, scenario) {
   const { agent, calls, prompts } = makeAgent(scenario);
   const phase = () => {};
   const log = () => {};
-  const runner = new Function("agent", "args", "phase", "log", `"use strict";\n${src}\n`);
+  // Workflow dùng top-level await + top-level return → phải biên dịch bằng
+  // AsyncFunction (giống runtime thật), không dùng Function đồng bộ.
+  const AsyncFunction = Object.getPrototypeOf(async function () {}).constructor;
+  const runner = new AsyncFunction("agent", "args", "phase", "log", `"use strict";\n${src}\n`);
   let result = null;
   let error = null;
   try {
-    result = runner(agent, args, phase, log);
+    result = await runner(agent, args, phase, log);
   } catch (e) {
     error = e;
   }

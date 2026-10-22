@@ -2,6 +2,7 @@
 // Chạy: node docs/tests/run-tests.mjs
 // Exit 0 khi mọi test pass; exit 1 nếu có test fail.
 
+import { readFile } from "node:fs/promises";
 import { runWorkflow, prefixScenario } from "./harness.mjs";
 
 const WF = "workflows/dev-team.js";
@@ -242,6 +243,26 @@ test("release-pipeline: review fail → dừng, không test tiếp", async () =>
   assert(result.status === "review-failed", "status phải là review-failed, thực tế: " + result.status);
   assert(!calls.includes("rp-test"), "không được test khi review fail");
   assert(!calls.includes("rp-ship"), "không được ship khi review fail");
+});
+
+// ---------- PHASE CONSISTENCY (tĩnh) ----------
+// Runtime thật ném "unknown workflow phase" khi script dùng phase chưa khai
+// báo trong meta.phases (shim chỉ cảnh báo — mock lệch thật). jarvis.js từng
+// dính: runOne dùng analyze/review/verify nhưng meta chỉ có implement gộp
+// (chỉ lộ khi e2e chạy qua được audit, 2026-10-22). Test này quét cả 4 file.
+test("phase-consistency: mọi phase dùng trong script đều khai báo ở meta", async () => {
+  for (const path of [WF, WJ, WS, WR]) {
+    const src = await readFile(path, "utf8");
+    const metaMatch = src.match(/const meta = (\{[\s\S]*?\n\});/);
+    assert(metaMatch, path + ": không tìm thấy meta");
+    const meta = new Function("return (" + metaMatch[1] + ");")();
+    const declared = new Set((meta.phases || []).map((p) => (typeof p === "string" ? p : p.name)));
+    const used = new Set();
+    for (const m of src.matchAll(/phase\(\s*"([^"]+)"/g)) used.add(m[1]);
+    for (const m of src.matchAll(/phase:\s*"([^"]+)"/g)) used.add(m[1]);
+    const missing = [...used].filter((u) => !declared.has(u));
+    assert(missing.length === 0, path + ": phase chưa khai báo trong meta: " + missing.join(", "));
+  }
 });
 
 // ---------- chạy ----------

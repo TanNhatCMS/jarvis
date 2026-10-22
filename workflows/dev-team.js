@@ -188,7 +188,7 @@ const shipSchema = {
   }
 };
 
-function runOne(t, idx) {
+async function runOne(t, idx) {
   const task = t.task;
   const repo = t.repo;
   const branch = t.branch;
@@ -224,7 +224,7 @@ function runOne(t, idx) {
   phase("analyze");
   log("Task " + (idx + 1) + ": phân tích và lập kế hoạch.");
 
-  const plan = agent(
+  const plan = await agent(
     "Bạn là kiến trúc sư phần mềm trong đội dev.\n" + contextBlock + "\n\n" +
     PLATFORM.trustBoundary + "\n" +
     skillHint("skills/ecc-architecture-decision-records/SKILL.md") + "\n" +
@@ -253,7 +253,7 @@ function runOne(t, idx) {
     const step = steps[si];
     let stepResult = null;
     try {
-      const codeResult = agent(
+      const codeResult = await agent(
         "Bạn là coder trong đội dev.\n" + contextBlock + "\n\n" +
         "Kế hoạch tổng thể: " + plan.summary + "\n\n" +
         "Nhiệm vụ của bạn — chỉ làm đúng step này, không lan man:\n" +
@@ -267,7 +267,7 @@ function runOne(t, idx) {
         { key: P + "code-" + step.id, label: "T" + (idx + 1) + " code: " + step.title, phase: "implement", timeoutMs: 1800000, schema: codeSchema }
       );
       if (codeResult) {
-        const check = agent(
+        const check = await agent(
           "Bạn là kỹ sư build trong đội dev.\n" + contextBlock + "\n\n" +
           "Coder vừa xong step \"" + step.title + "\" (ID " + step.id + "): " + codeResult.summary + "\n" +
           "File đã đổi: " + ((codeResult.files_changed || []).join(", ") || "(không rõ)") + "\n\n" +
@@ -318,7 +318,7 @@ function runOne(t, idx) {
   let reviewNotes = "";
   while (attempt <= maxRepair) {
     attempt = attempt + 1;
-    review = agent(
+    review = await agent(
       "Bạn là reviewer khó tính, ĐỘC LẬP với coder — không tin mù quáng bất kỳ tóm tắt nào của coder.\n" + contextBlock + "\n\n" +
       "Task: " + task + "\n" +
       "Kế hoạch: " + plan.summary + "\n" +
@@ -334,7 +334,7 @@ function runOne(t, idx) {
     );
     if (review.passed || attempt > maxRepair) break;
     log("Task " + (idx + 1) + ": review vòng " + attempt + " chưa đạt — sửa theo feedback.");
-    const repair = agent(
+    const repair = await agent(
       "Bạn là coder trong đội dev.\n" + contextBlock + "\n\n" +
       "Reviewer yêu cầu sửa các điểm BẮT BUỘC sau:\n- " + (review.must_fix || []).join("\n- ") + "\n\n" +
       "Hãy sửa đúng các điểm trên, giữ nguyên scope task, không refactor lan man."
@@ -352,7 +352,7 @@ function runOne(t, idx) {
   phase("verify");
   log("Task " + (idx + 1) + ": kiểm thử tổng thể.");
 
-  let verify = agent(
+  let verify = await agent(
     "Bạn là QA cuối cùng trong đội dev — ĐỘC LẬP với coder và reviewer.\n" + contextBlock + "\n\n" +
     "Task: " + task + "\n" +
     "Các file coder KHAI BÁO đã đổi (phải tự kiểm chứng bằng git, không tin mù quáng): " + (allFiles.join(", ") || "(không xác định)") + "\n" +
@@ -377,7 +377,7 @@ function runOne(t, idx) {
   let vAttempt = 1;
   while (!verify.passed && verify.retryable && vAttempt <= maxRepair) {
     log("Task " + (idx + 1) + ": verify chưa đạt (lần " + vAttempt + ") — sửa theo feedback QA.");
-    agent(
+    await agent(
       "Bạn là coder trong đội dev.\n" + contextBlock + "\n\n" +
       "QA báo lỗi cần sửa:\n" + (verify.feedback || "(không có chi tiết)") + "\n\n" +
       "Hãy sửa đúng lỗi trên, giữ nguyên scope task."
@@ -385,7 +385,7 @@ function runOne(t, idx) {
       { key: P + "verify-repair-" + vAttempt, label: "T" + (idx + 1) + " sửa theo QA lần " + vAttempt, phase: "verify", timeoutMs: 1800000, schema: repairSchema }
     );
     vAttempt = vAttempt + 1;
-    verify = agent(
+    verify = await agent(
       "Bạn là QA cuối cùng trong đội dev — ĐỘC LẬP với coder và reviewer.\n" + contextBlock + "\n\n" +
       "Task: " + task + "\n" +
       "Đây là lần kiểm thử lại thứ " + vAttempt + " sau khi đã sửa theo feedback: " + (verify.feedback || "") + "\n\n" +
@@ -432,7 +432,7 @@ function runOne(t, idx) {
         "title ngắn gọn, body gồm danh sách file đổi, kết quả review và verify" +
         ((issueNumber || createIssue) ? ", và dòng \"Closes #<số-issue>\"" : "") + "."
       : "bỏ qua.";
-    ship = agent(
+    ship = await agent(
       "Bạn là release engineer trong đội dev.\n" + contextBlock + "\n\n" +
       "Task: " + task + "\n" +
       "Repo GitHub: " + githubRepo + "\n" +
@@ -501,7 +501,7 @@ for (let i = 0; i < taskList.length; i++) {
   const t = taskList[i];
   log("=== Task " + (i + 1) + "/" + taskList.length + ": " + (t.task || "(thiếu mô tả)") + " ===");
   try {
-    results.push(runOne(t, i));
+    results.push(await runOne(t, i));
   } catch (err) {
     results.push({
       task: t.task || "",
