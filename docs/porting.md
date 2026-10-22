@@ -102,6 +102,14 @@ Chuẩn `SKILL.md` (frontmatter `name` + `description`, thân markdown) — tư�
 thích với quy ước Agent Skills đang phổ biến. Danh mục đầy đủ:
 [SKILLS_INDEX.md](../SKILLS_INDEX.md).
 
+## Connectors (`connectors/`)
+
+Connector dịch vụ ngoài nằm riêng ở `connectors/<tên>/` (tên trần theo upstream
+awesome-muse-connectors), không tính vào danh mục skills. Cùng chuẩn `SKILL.md`
+nhưng frontmatter thêm `tagline`, `catalog_auth`, `catalog_hosts` và kèm CLI ở
+`bin/<tên>.py`. `install.sh` cài sang `$PREFIX/connectors`. Catalog:
+[connectors/README.md](../connectors/README.md).
+
 ## Checklist porting
 
 - [ ] Shim chạy `--dry-run` pass cho cả 3 workflow (meta hợp lệ, không crash

@@ -142,6 +142,19 @@ Một số skill giữ file LICENSE riêng trong thư mục của nó
 (`anthropics-*`, `caveman`, `dev-best-practices`, `headroom`, `karpathy`,
 `taste-design`); các skill còn lại được kê tập trung trong ATTRIBUTION.md.
 
+## Connectors
+
+158 connector tới dịch vụ ngoài (Airtable, GitHub, Stripe, Spotify...) đặt
+riêng ở [`connectors/`](connectors/README.md) — **không** gom vào `skills/`.
+Cấu trúc tên trần `connectors/<tên>/` (`SKILL.md` + `bin/<tên>.py`) theo đúng
+upstream [Anil-matcha/awesome-muse-connectors](https://github.com/Anil-matcha/awesome-muse-connectors):
+catalog đầy đủ (auth, allowed hosts, maturity) tại
+[connectors/README.md](connectors/README.md), mẫu thêm connector mới tại
+[`connectors/_template/SKILL.md`](connectors/_template/SKILL.md).
+
+> 97,5% connector đang ở trạng thái 🧪 Draft — viết từ public API docs, chưa
+> live-test end-to-end. Đọc mục maturity + red flags trong catalog trước khi dùng.
+
 ## Cách dùng
 
 Các script chạy trên workflow runtime (đăng ký bằng `workflow.create`, gọi bằng

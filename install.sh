@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# install.sh — cài đặt JARVIS skills/agents/workflows vào máy local.
+# install.sh — cài đặt JARVIS skills/connectors/agents/workflows vào máy local.
 # Cách dùng:
 #   ./install.sh                       # cài vào ~/.jarvis
 #   ./install.sh --prefix ~/my-dir     # cài vào thư mục tùy chọn
@@ -30,6 +30,7 @@ install_dir() {
 }
 
 install_dir "skills" "$PREFIX/skills"
+install_dir "connectors" "$PREFIX/connectors"
 install_dir "agents" "$PREFIX/agents"
 install_dir "workflows" "$PREFIX/workflows"
 install_dir "docs" "$PREFIX/docs"
