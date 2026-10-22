@@ -1,6 +1,6 @@
 # SKILLS INDEX
 
-Danh mục 1584 skills trong `skills/`. License từng nguồn: xem [ATTRIBUTION.md](ATTRIBUTION.md).
+Danh mục 1585 skills trong `skills/`. License từng nguồn: xem [ATTRIBUTION.md](ATTRIBUTION.md).
 
 > Connectors không nằm ở đây nữa: 158 connector đã tách khỏi `skills/` sang
 > [`connectors/`](connectors/README.md) ở root repo (tên trần, đúng cấu trúc
@@ -140,3 +140,9 @@ Không lấy: 1065 imports không rõ license, 10 proprietary, 79 license mập 
 | Skill | Mô tả |
 |---|---|
 | `local-grounded-humanizer` | Hội thoại có căn cứ và tiếng Việt: đọc cả chuỗi trao đổi, giữ lập trường, phát ngôn từ đúng cương vị chịu trách nhiệm (operational voice), xưng hô/trợ từ/vùng miền/chat số dựa trên nghiên cứu ngôn ngữ học. Không dùng để qua mặt AI detector hay giả mạo người thật. Bóc từ monasprox/humanizer @ `4784ca7` (mở rộng blader/humanizer); không lấy `agents/openai.yaml`. |
+
+## AI Code Review (1 skill — user cung cấp trực tiếp)
+
+| Skill | Mô tả |
+|---|---|
+| `ai-code-review` | Dựng hệ thống code review bằng AI theo cách Anthropic làm cho Claude Code: review như lớp liên tục gồm 7 tầng, find → verify → filter → rank để giảm false positive, duyệt phân tầng theo rủi ro của thay đổi, chống vòng lặp review vô tận (round cap, diff-only re-review), REVIEW.md steering, biến incident thành eval. Kèm 6 references chi tiết; các tham chiếu của repo nguồn đã sửa sang tương đương jarvis. |
