@@ -1,6 +1,6 @@
 # SKILLS INDEX
 
-Danh mục 1585 skills trong `skills/`. License từng nguồn: xem [ATTRIBUTION.md](ATTRIBUTION.md).
+Danh mục 1587 skills trong `skills/`. License từng nguồn: xem [ATTRIBUTION.md](ATTRIBUTION.md).
 
 > Connectors không nằm ở đây nữa: 158 connector đã tách khỏi `skills/` sang
 > [`connectors/`](connectors/README.md) ở root repo (tên trần, đúng cấu trúc
@@ -146,3 +146,10 @@ Không lấy: 1065 imports không rõ license, 10 proprietary, 79 license mập 
 | Skill | Mô tả |
 |---|---|
 | `ai-code-review` | Dựng hệ thống code review bằng AI theo cách Anthropic làm cho Claude Code: review như lớp liên tục gồm 7 tầng, find → verify → filter → rank để giảm false positive, duyệt phân tầng theo rủi ro của thay đổi, chống vòng lặp review vô tận (round cap, diff-only re-review), REVIEW.md steering, biến incident thành eval. Kèm 6 references chi tiết; các tham chiếu của repo nguồn đã sửa sang tương đương jarvis. |
+
+## php2shell Checker (2 skills — openai/php2shell-checker, Apache-2.0)
+
+| Skill | Mô tả |
+|---|---|
+| `phpcheck-server` | Kiểm tra trạng thái vá php2shell khi có quyền truy cập server/local: bắt đầu từ `php -v` nhưng phải đối chiếu đúng bản PHP đang phục vụ site (PHP-FPM/Apache), kèm bảng vulnerable-range theo từng nhánh PHP 5.4–8.5 (cắt tại 2026-10-20) và lưu ý vendor backport. Không chạy exploit probe. |
+| `phpcheck-url` | Kiểm tra phiên bản PHP quảng bá từ URL/hostname khi chỉ có URL: chạy `scripts/phpcheck.js` (code upstream nguyên văn, kèm LICENSE) — chỉ đọc header `Server` / `X-Powered-By` qua HEAD (fallback GET khi 405/501), trả OK / VULNERABLE / UNKNOWN kèm `--json`; ẩn version thì báo UNKNOWN. Không chạy exploit probe. |
