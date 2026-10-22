@@ -13,7 +13,7 @@
 allotropy==0.1.55
 
 # Data manipulation and file reading
-pandas==2.0.3
+pandas==3.0.6
 
 # Excel file support (required by pandas for .xlsx files)
 openpyxl==3.1.2
