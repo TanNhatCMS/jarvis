@@ -10,7 +10,7 @@
 # Note: Versions pinned as of 2025-01-05
 
 # Core parsing library - provides native instrument parsers
-allotropy==0.1.55
+allotropy==0.1.149
 
 # Data manipulation and file reading
 pandas==2.0.3
