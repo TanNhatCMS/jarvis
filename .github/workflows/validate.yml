@@ -40,15 +40,16 @@ jobs:
           print("frontmatter OK")
           EOF
 
-      - name: Check workflow syntax (strip export, node Function parse)
+      - name: Check workflow syntax (strip export, AsyncFunction parse)
         run: |
           node -e "
           const fs = require('fs');
+          const AsyncFunction = Object.getPrototypeOf(async function(){}).constructor;
           for (const f of fs.readdirSync('workflows').filter(f => f.endsWith('.js'))) {
             let src = fs.readFileSync('workflows/' + f, 'utf8');
             src = src.replace(/^\s*export\s+const\s+meta/m, 'const meta');
             if (/^\s*(import|export)\s/m.test(src)) throw new Error(f + ': chứa import/export không hỗ trợ');
-            new Function('agent', 'args', 'phase', 'log', src);
+            new AsyncFunction('agent', 'args', 'phase', 'log', src);
             console.log(f, 'syntax OK');
           }"
 
