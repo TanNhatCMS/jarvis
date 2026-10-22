@@ -1,8 +1,11 @@
 # SKILLS INDEX
 
-Danh mục 1742 skills trong `skills/`. License từng nguồn: xem [ATTRIBUTION.md](ATTRIBUTION.md).
+Danh mục 1584 skills trong `skills/`. License từng nguồn: xem [ATTRIBUTION.md](ATTRIBUTION.md).
 
-> Ghi chú: main ghi 87 là thiếu (đã merge PR #5: +158 connectors, PR #6: +1 skill → thực tế 245 trước PR này).
+> Connectors không nằm ở đây nữa: 158 connector đã tách khỏi `skills/` sang
+> [`connectors/`](connectors/README.md) ở root repo (tên trần, đúng cấu trúc
+> upstream Anil-matcha/awesome-muse-connectors) — chuẩn hoá 2026-10-22,
+> không giữ shim ở `skills/`.
 
 > Lưu ý: `skills/ecc-dev-team/` là skill của ECC (cho Claude Code), **khác** với
 > `workflows/dev-team.js` (workflow điều phối của JARVIS). Hai thứ trùng tên nhưng độc lập.

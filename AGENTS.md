@@ -8,6 +8,10 @@ File này dành cho agent (và con người) đóng góp vào repo. Đọc trư�
   Chạy trên workflow runtime — xem `docs/runtime-interface.md`. Không thêm
   `import`/`export` khác ngoài `export const meta`.
 - `skills/<tên>/SKILL.md` — chuẩn Agent Skills (frontmatter `name` + `description`).
+- `connectors/<tên>/SKILL.md` + `bin/` — connector dịch vụ ngoài, tên trần theo
+  cấu trúc upstream Anil-matcha/awesome-muse-connectors; catalog tại
+  `connectors/README.md`, mẫu tại `connectors/_template/SKILL.md`.
+  **Không đặt connector trong `skills/`.**
 - `agents/ecc/` — agent definitions (frontmatter kiểu Claude Code).
 - `docs/` — tài liệu kỹ thuật; `docs/tests/` — harness test gate.
 
@@ -41,3 +45,15 @@ File này dành cho agent (và con người) đóng góp vào repo. Đọc trư�
 2. Thêm dòng vào [SKILLS_INDEX.md](SKILLS_INDEX.md) đúng nhóm nguồn.
 3. Thêm nguồn + license vào [ATTRIBUTION.md](ATTRIBUTION.md).
 4. Nếu skill bọc tool ngoài (binary/API): ghi rõ trong SKILL.md, không vendor code.
+
+## Thêm connector mới
+
+1. Tạo `connectors/<tên>/` từ [`connectors/_template/SKILL.md`](connectors/_template/SKILL.md)
+   (tên thư mục trần = `name` trong frontmatter; frontmatter phải có
+   `name`, `description`, `tagline`, `catalog_auth`, `catalog_hosts`).
+2. CLI đặt ở `connectors/<tên>/bin/<tên>.py`; mục `## Files` trong SKILL.md
+   phải khớp đúng file thực tế; `## Maturity` để `🧪 Draft` cho tới khi live-test.
+3. Thêm 1 dòng vào bảng catalog trong [connectors/README.md](connectors/README.md)
+   (đúng thứ tự alphabet) + nguồn/license vào [ATTRIBUTION.md](ATTRIBUTION.md).
+4. Viết/ghi dữ liệu ra ngoài phải có cổng xác nhận trong `## Operating Rules`;
+   không commit secret, không nhận credential qua tham số CLI.
