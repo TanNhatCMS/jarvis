@@ -3,6 +3,28 @@
 Mọi thay đổi prompt/policy của workflow đều ghi ở đây (kèm version).
 Xem quy trình tại [../learning-loop.md](../learning-loop.md).
 
+## 2026-10-22 — nạp pipeline-system cho 3 workflow còn lại
+
+`workflows/dev-team.js` (2.0.0 → 2.1.0), `workflows/spec-team.js`
+(2.0.0 → 2.1.0), `workflows/release-pipeline.js` (1.0.0 → 1.1.0): nạp
+`prompts/jarvis-pipeline-system.md` theo đúng cơ chế của `jarvis.js` v2.1.0
+(`PLATFORM.pipelineSystem` + `pipelineSystemHint(sections)` + `PIPELINE_CORE`,
+hint luôn có hiệu lực, không nhúng toàn văn file vào script).
+
+- `dev-team.js`: gắn 9 điểm gọi agent — planner (mục 4, 5, 6), coder (2, 9),
+  build-check (8, 10), reviewer (7, 8, 11), repair sau review (9),
+  QA verify (8 — gồm 8.2/8.3, 10, 13), sửa theo QA (9), verify lại (10, 13),
+  ship (15, 16).
+- `spec-team.js`: chỉ các pha kỹ thuật — plan (4, 5, 6), tasks (5),
+  analyze/audit (5, 7, 8), sửa artifacts sau audit (8). Các pha spec
+  (discover, constitution, specify, clarify) giữ nguyên như tiền lệ jarvis.js.
+- `release-pipeline.js`: analyzer (4, 5, 6), coder (2, 9), reviewer (7, 8, 11),
+  repair (9), review lại (7, 8, 11), tester (8 — gồm 8.2/8.3, 10, 13),
+  shipper (15, 16). Pha spec giữ nguyên.
+- Lý do: user yêu cầu hoàn tất việc nạp cho cả 4 workflow (tiếp nối mục
+  2.1.0 ở dưới). Benchmark trước/sau: 3/3 fixtures, `agent_calls` không đổi;
+  gate tests 19/19.
+
 ## 2.1.0 — 2026-10-22
 
 `workflows/jarvis.js`: nạp `prompts/jarvis-pipeline-system.md` vào pipeline.
