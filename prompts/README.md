@@ -6,7 +6,7 @@ Các system prompt dùng lại được cho JARVIS — phiên bản có kiểm s
 
 | File | Dùng cho |
 |---|---|
-| `jarvis-pipeline-system.md` | Audit/harden pipeline: discovery → hypothesis → trust boundary → fail-closed gates → regression test → adversarial review → pre-mortem → final verification → báo cáo theo format chuẩn |
+| `jarvis-pipeline-system.md` | Audit/harden pipeline: discovery → hypothesis → trust boundary → fail-closed gates → regression test → adversarial review → pre-mortem → final verification → báo cáo theo format chuẩn. **Đã nạp vào `workflows/jarvis.js`** từ prompt v2.1.0 (qua `pipelineSystemHint`, gắn theo vai trò ở các pha kỹ thuật) |
 | `jarvis-setup.md` | Agent tự cài đặt JARVIS trên máy của mình: khảo sát → clone → install → verify tests → đăng ký 4 workflows → báo cáo trung thực. Có khối **one-throw** ở đầu file — chỉ cần copy/paste cho agent là nó tự bootstrap toàn bộ |
 | `jarvis-setup-throw.md` | Bản one-throw độc lập — chỉ cần ném file này (hoặc raw URL của nó) cho agent, không cần copy khối text |
 | `hugginggpt-4stage.md` | Prompt tham khảo: 4-stage orchestration của HuggingGPT (microsoft/JARVIS, MIT) — task planning, model selection, task execution, response generation; kèm ghi chú port sang chat model hiện tại |

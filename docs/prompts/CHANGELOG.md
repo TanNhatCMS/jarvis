@@ -3,6 +3,24 @@
 Mọi thay đổi prompt/policy của workflow đều ghi ở đây (kèm version).
 Xem quy trình tại [../learning-loop.md](../learning-loop.md).
 
+## 2.1.0 — 2026-10-22
+
+`workflows/jarvis.js`: nạp `prompts/jarvis-pipeline-system.md` vào pipeline.
+
+- Thêm `PLATFORM.pipelineSystem` + `pipelineSystemHint(sections)` +
+  `PIPELINE_CORE`: mọi agent thuộc pha kỹ thuật (audit, planner, coder,
+  build-check, reviewer, repair, QA verify + re-verify, ship) đều nhận lệnh
+  đọc & tuân thủ file, trỏ đúng các mục hợp vai trò. Hint **luôn có hiệu lực**
+  (chưa cấu hình `skillsRepo` thì trỏ về bản cài mặc định `~/.jarvis/`) —
+  khác `skillHint` vốn tắt khi chưa cấu hình.
+- KHÔNG nhúng toàn văn 720 dòng vào script: file .md giữ là nguồn chuẩn duy
+  nhất; `PIPELINE_CORE` chỉ là fallback tối thiểu khi agent không đọc được file.
+- Phạm vi: chỉ `jarvis.js`. Các pha spec (discover → tasks) giữ nguyên;
+  `dev-team.js` / `spec-team.js` / `release-pipeline.js` chưa nạp (việc riêng).
+- Lý do: yêu cầu trực tiếp của user — file có từ 2026-10-15 nhưng chưa từng
+  được workflow nào nạp. Benchmark trước/sau: 3/3 fixtures, `agent_calls`
+  không đổi (6/7/6); gate tests 19/19.
+
 ## 2026-10-16 — prompts/bot-templates/ (mới, bóc tách)
 
 14 bot brief template từ Anil-matcha/awesome-muse-connectors (MIT, của Anil-matcha),
