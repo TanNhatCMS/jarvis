@@ -33,6 +33,7 @@ File này là bản kê attribution tập trung của repo.
 | animated-short-film | `animated-short-film` (SKILL.md + `references/` + `examples/`, không lấy `docs/` landing page) + `JARVIS-NOTE.md` (map media-generation→media, TTS→spoken-audio) | [sonlovinbot/Muse-animated-short-film](https://github.com/sonlovinbot/Muse-animated-short-film) (Đặng Hữu Sơn) | MIT |
 | grounded-humanizer | `local-grounded-humanizer` (SKILL.md + `references/` 7 file + `evals/behavior-cases.md`, commit `4784ca7`; chỉ đổi frontmatter `name`, không lấy `agents/openai.yaml`) | [monasprox/humanizer](https://github.com/monasprox/humanizer) (mở rộng từ [blader/humanizer](https://github.com/blader/humanizer)) | MIT |
 | ai-code-review | `ai-code-review` (SKILL.md + `references/` 6 file; đã sửa các tham chiếu commands/rules của repo nguồn sang tương đương jarvis, chỗ không có tương đương ghi rõ là gap) | User cung cấp trực tiếp (file zip, 2026-10-22); nội dung phương pháp theo "How the Claude Code team does code review" — [Anthropic / Claude Code blog](https://claude.dev/blog) | Chưa rõ — gói nguồn không kèm LICENSE; không tự gán license |
+| php2shell-checker | `phpcheck-server` (chỉ SKILL.md), `phpcheck-url` (SKILL.md + `scripts/phpcheck.js` + `LICENSE` nguyên văn) | [openai/php2shell-checker](https://github.com/openai/php2shell-checker) @ `40a4746` | Apache-2.0 |
 
 License trong bảng được kiểm chứng từ GitHub API / file LICENSE của upstream
 ngày 2026-10-15. Copyright thuộc về các tác giả của từng dự án nguồn
@@ -70,9 +71,22 @@ ngày 2026-10-15. Copyright thuộc về các tác giả của từng dự án n
   OpenAI-style, không phù hợp chuẩn repo).
   Vì không phân phối code AGPL nên AGPL không áp đặt nghĩa vụ lên repo này.
   Nếu sau này ai vendor code Firecrawl vào repo thì phải tuân thủ AGPL-3.0.
+- **php2shell-checker (Apache-2.0):** bóc nguyên văn cả 2 skill của
+  openai/php2shell-checker @ `40a4746` (2026-10-22): `phpcheck-server`
+  (chỉ SKILL.md, bảng vulnerable-range cắt tại 2026-10-20) và `phpcheck-url`
+  (SKILL.md + `scripts/phpcheck.js` nguyên văn từng byte + `LICENSE`
+  Apache-2.0 copy từ root upstream). Chỉ điều chỉnh ở bản jarvis: mở rộng
+  dòng `description` trong frontmatter cho dễ kích hoạt và thêm ghi chú
+  nguồn; `phpcheck-server` có thêm ghi chú rằng script của `phpcheck-url`
+  chạy được ở chế độ `--local`. Vet script (2026-10-22): chỉ `fetch`
+  HEAD/GET đọc header `Server`/`X-Powered-By` (không follow redirect,
+  không đọc body, timeout ≤60s, từ chối URL có credential/fragment) và
+  `execFileSync(php, ['-v'])` không qua shell — không exploit probe,
+  không ghi file, không gửi dữ liệu đi nơi khác. Test upstream
+  `node --test phpcheck.test.js`: 39/39 pass trên máy này.
 - **File LICENSE riêng trong từng skill:** hiện có ở `anthropics-mcp-builder`,
   `anthropics-skill-creator`, `caveman`, `dev-best-practices`, `headroom`,
-  `karpathy`, `taste-design`. Các skill còn lại dùng bản kê tập trung trong
+  `karpathy`, `phpcheck-url`, `taste-design`. Các skill còn lại dùng bản kê tập trung trong
   file này (kèm toàn văn Apache-2.0 ở phụ lục).
 
 ## Phụ lục: toàn văn Apache License 2.0
