@@ -1,0 +1,36 @@
+name: agent-approval-check
+
+# Gate: PR nào có commit do agent viết (nhận diện qua email committer)
+# thì cần N lượt duyệt của người thật mới merge được.
+# PR toàn do người viết thì pass ngay, không ảnh hưởng.
+#
+# Thích ứng cho repo của bạn (checked 2026-10-19):
+# - Commit do agent viết trên VM mang email jarvis@local (repo jarvis)
+#   hoặc jarvis@tannhatcms.io.vn (repo event-lead-si)
+# - required_approvals: 1 (repo chỉ có 1 người: bạn. Để 2 sẽ kẹt cứng vì
+#   không đủ 2 người khác nhau để duyệt)
+# - Cách duyệt: bấm nút Approve (PR không phải của bạn mở) hoặc comment
+#   /approve <sha> trên chính PR — cách này để tác giả PR cũng được tính
+#   1 lượt (GitHub không cho tự approve PR của mình)
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened, ready_for_review]
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: read
+  pull-requests: write
+  statuses: write
+
+jobs:
+  check:
+    if: github.event_name != 'issue_comment' || github.event.issue.pull_request
+    runs-on: ubuntu-latest
+    steps:
+      - uses: anthropics/claude-code-action/agent-approval-check@main
+        with:
+          required_approvals: 1
+          agent_emails: jarvis@local,jarvis@tannhatcms.io.vn,noreply@anthropic.com
+          agent_logins: claude[bot],claude-code[bot]

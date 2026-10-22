@@ -1,0 +1,59 @@
+name: validate
+
+on:
+  push:
+    branches: [main, "fix/**", "dev-team/**"]
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check SKILL.md frontmatter
+        run: |
+          python3 - <<'EOF'
+          import os, re, sys
+          bad = []
+          n = 0
+          # Catalog landing pages, not skills (no SKILL.md by design)
+          SKIP = {"awesome-muse-skills", "muse-connectors"}
+          for d in sorted(os.listdir("skills")):
+              if d in SKIP:
+                  continue
+              p = os.path.join("skills", d, "SKILL.md")
+              if not os.path.exists(p):
+                  bad.append(f"{d}: thiếu SKILL.md"); continue
+              n += 1
+              with open(p, encoding="utf-8", errors="replace") as f:
+                  head = f.read(4000)
+              m = re.match(r"^---\n(.*?)\n---", head, re.S)
+              if not m:
+                  bad.append(f"{d}: thiếu frontmatter"); continue
+              fm = m.group(1)
+              if not re.search(r"^name:\s*\S+", fm, re.M): bad.append(f"{d}: thiếu name")
+              if not re.search(r"^description:", fm, re.M): bad.append(f"{d}: thiếu description")
+          print(f"skills: {n} checked")
+          if bad:
+              print("ERRORS:"); [print(" -", b) for b in bad]; sys.exit(1)
+          print("frontmatter OK")
+          EOF
+
+      - name: Check workflow syntax (strip export, node Function parse)
+        run: |
+          node -e "
+          const fs = require('fs');
+          for (const f of fs.readdirSync('workflows').filter(f => f.endsWith('.js'))) {
+            let src = fs.readFileSync('workflows/' + f, 'utf8');
+            src = src.replace(/^\s*export\s+const\s+meta/m, 'const meta');
+            if (/^\s*(import|export)\s/m.test(src)) throw new Error(f + ': chứa import/export không hỗ trợ');
+            new Function('agent', 'args', 'phase', 'log', src);
+            console.log(f, 'syntax OK');
+          }"
+
+      - name: Run gate tests (mock agent)
+        run: node docs/tests/run-tests.mjs
+
+      - name: Run benchmark
+        run: node docs/tests/benchmark.mjs
