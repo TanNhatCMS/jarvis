@@ -5,7 +5,7 @@ description: Check PHP2Shell patch status with local or server access. Use when 
 
 > **Nguồn / bản jarvis:** bóc nguyên văn từ [openai/php2shell-checker](https://github.com/openai/php2shell-checker) @ `40a4746` (Apache-2.0) — xem `ATTRIBUTION.md`. Chỉ mở rộng dòng `description` ở frontmatter và thêm ghi chú chạy script ngay dưới đây; bảng vulnerable-range giữ nguyên văn.
 >
-> **Ghi chú jarvis:** bản cài kèm script của skill `phpcheck-url` cũng chạy được ở chế độ local trên chính server: `node ../phpcheck-url/scripts/phpcheck.js --local --json` (exit 0 = OK, 1 = VULNERABLE, 3 = UNKNOWN).
+> **Ghi chú jarvis:** bản cài kèm script của skill `phpcheck-url` cũng chạy được ở chế độ local trên chính server: `node ../phpcheck-url/scripts/phpcheck.js --local --json` (exit 0 = OK, 1 = VULNERABLE, 3 = UNKNOWN). Khi chưa có quyền server mà chỉ có URL: dùng trước skill `phpcheck-url` — mục "Mở rộng jarvis" trong đó moi bằng chứng từ kênh công khai (fingerprint CMS, file lộ phiên bản, phpinfo) trước khi kết luận unknown; bảng vulnerable-range của skill này là bảng đối chiếu chung cho cả hai.
 
 Check the PHP version serving the site. Start with `php -v`, but verify that
 it matches the site's PHP-FPM or Apache installation.
