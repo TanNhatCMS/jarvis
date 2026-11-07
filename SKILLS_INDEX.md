@@ -1,6 +1,6 @@
 # SKILLS INDEX
 
-Danh mục 1587 skills trong `skills/`. License từng nguồn: xem [ATTRIBUTION.md](ATTRIBUTION.md).
+Danh mục 1588 skills trong `skills/`. License từng nguồn: xem [ATTRIBUTION.md](ATTRIBUTION.md).
 
 > Connectors không nằm ở đây nữa: 158 connector đã tách khỏi `skills/` sang
 > [`connectors/`](connectors/README.md) ở root repo (tên trần, đúng cấu trúc
@@ -153,3 +153,9 @@ Không lấy: 1065 imports không rõ license, 10 proprietary, 79 license mập 
 |---|---|
 | `phpcheck-server` | Kiểm tra trạng thái vá php2shell khi có quyền truy cập server/local: bắt đầu từ `php -v` nhưng phải đối chiếu đúng bản PHP đang phục vụ site (PHP-FPM/Apache), kèm bảng vulnerable-range theo từng nhánh PHP 5.4–8.5 (cắt tại 2026-10-20) và lưu ý vendor backport. Không chạy exploit probe. |
 | `phpcheck-url` | Kiểm tra phiên bản PHP quảng bá từ URL/hostname khi chỉ có URL: chạy `scripts/phpcheck.js` (code upstream nguyên văn, kèm LICENSE) — chỉ đọc header `Server` / `X-Powered-By` qua HEAD (fallback GET khi 405/501), trả OK / VULNERABLE / UNKNOWN kèm `--json`; ẩn version thì báo UNKNOWN. Không chạy exploit probe. |
+
+## Cloudflare Security Audit (1 skill — cloudflare/security-audit-skill, MIT)
+
+| Skill | Mô tả |
+|---|---|
+| `security-audit` | Audit bảo mật codebase theo 6 pha: recon → hunting theo coverage-ledger (11 ma trận tấn công) → verifier mới cố bác bỏ từng candidate → `findings.json` (confirmed / needs_validation / rejected) → xác minh độc lập từng claim → báo cáo (REPORT.md, FINDINGS-DETAIL.md, NEEDS-VALIDATION.md). Chỉ đọc source, không probe endpoint live; validator `.cjs` zero-dependency, test 65/65 pass. |

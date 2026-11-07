@@ -34,6 +34,7 @@ File này là bản kê attribution tập trung của repo.
 | grounded-humanizer | `local-grounded-humanizer` (SKILL.md + `references/` 7 file + `evals/behavior-cases.md`, commit `4784ca7`; chỉ đổi frontmatter `name`, không lấy `agents/openai.yaml`) | [monasprox/humanizer](https://github.com/monasprox/humanizer) (mở rộng từ [blader/humanizer](https://github.com/blader/humanizer)) | MIT |
 | ai-code-review | `ai-code-review` (SKILL.md + `references/` 6 file; đã sửa các tham chiếu commands/rules của repo nguồn sang tương đương jarvis, chỗ không có tương đương ghi rõ là gap) | User cung cấp trực tiếp (file zip, 2026-10-22); nội dung phương pháp theo "How the Claude Code team does code review" — [Anthropic / Claude Code blog](https://claude.dev/blog) | Chưa rõ — gói nguồn không kèm LICENSE; không tự gán license |
 | php2shell-checker | `phpcheck-server` (chỉ SKILL.md), `phpcheck-url` (SKILL.md + `scripts/phpcheck.js` + `LICENSE` nguyên văn) | [openai/php2shell-checker](https://github.com/openai/php2shell-checker) @ `40a4746` | Apache-2.0 |
+| security-audit | `security-audit` (SKILL.md + 14 file tham chiếu + `report-schema.json` + 2 validator `.cjs` kèm test + `LICENSE` + `README.md` nguyên văn) | [cloudflare/security-audit-skill](https://github.com/cloudflare/security-audit-skill) @ `c1c8a8c` | MIT |
 
 License trong bảng được kiểm chứng từ GitHub API / file LICENSE của upstream
 ngày 2026-10-15. Copyright thuộc về các tác giả của từng dự án nguồn
@@ -84,9 +85,21 @@ ngày 2026-10-15. Copyright thuộc về các tác giả của từng dự án n
   `execFileSync(php, ['-v'])` không qua shell — không exploit probe,
   không ghi file, không gửi dữ liệu đi nơi khác. Test upstream
   `node --test phpcheck.test.js`: 39/39 pass trên máy này.
+- **security-audit (MIT):** bóc nguyên văn skill duy nhất của
+  cloudflare/security-audit-skill @ `c1c8a8c` (2026-11-07): SKILL.md
+  (192 dòng) + 14 file tham chiếu (gồm 11 ma trận tấn công) +
+  `report-schema.json` + 2 validator `.cjs` kèm test + `LICENSE` +
+  `README.md` copy từ root upstream. Quy trình 6 pha: recon →
+  coverage-led hunting → adversarial validation (verifier mới cố bác bỏ
+  từng candidate) → structured output (`findings.json`: confirmed /
+  needs_validation / rejected) → independent record verification →
+  reporting. Chỉ đọc source, không probe endpoint live, không cài
+  dependency. Test upstream
+  `node --test validate-findings.test.cjs validate-coverage-ledger.test.cjs`:
+  65/65 pass trên máy này.
 - **File LICENSE riêng trong từng skill:** hiện có ở `anthropics-mcp-builder`,
   `anthropics-skill-creator`, `caveman`, `dev-best-practices`, `headroom`,
-  `karpathy`, `phpcheck-url`, `taste-design`. Các skill còn lại dùng bản kê tập trung trong
+  `karpathy`, `phpcheck-url`, `security-audit`, `taste-design`. Các skill còn lại dùng bản kê tập trung trong
   file này (kèm toàn văn Apache-2.0 ở phụ lục).
 
 ## Phụ lục: toàn văn Apache License 2.0
